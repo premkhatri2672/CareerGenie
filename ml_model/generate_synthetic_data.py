@@ -2,7 +2,7 @@ import json
 import random
 from datetime import datetime, timedelta
 
-# Technical skills database
+
 TECHNICAL_SKILLS = [
     "Python", "JavaScript", "Java", "C++", "C#", "Go", "Rust", "Ruby", "PHP", "Swift",
     "Kotlin", "TypeScript", "React", "Vue.js", "Angular", "Node.js", "Express",
@@ -51,7 +51,7 @@ def generate_resume(student_id, quality_level=None):
     if quality_level is None:
         quality_level = random.choice(['junior', 'mid', 'senior'])
 
-    # Determine skills based on quality
+    
     if quality_level == 'junior':
         num_skills = random.randint(3, 6)
         experience_years = random.randint(0, 2)
@@ -60,7 +60,7 @@ def generate_resume(student_id, quality_level=None):
         num_skills = random.randint(6, 10)
         experience_years = random.randint(2, 5)
         score = random.randint(65, 82)
-    else:  # senior
+    else:  
         num_skills = random.randint(10, 15)
         experience_years = random.randint(5, 15)
         score = random.randint(82, 95)
@@ -68,7 +68,7 @@ def generate_resume(student_id, quality_level=None):
     selected_skills = random.sample(TECHNICAL_SKILLS, num_skills)
     selected_soft_skills = random.sample(SOFT_SKILLS, random.randint(2, 4))
 
-    # Generate work experience
+    
     experiences = []
     for i in range(random.randint(1, 4)):
         start_year = datetime.now().year - experience_years + i
@@ -81,7 +81,7 @@ def generate_resume(student_id, quality_level=None):
             "duration_months": duration * 12 + random.randint(0, 11)
         })
 
-    # Generate projects
+    
     projects = []
     for i in range(random.randint(1, 3)):
         num_tech = min(random.randint(2, 4), len(selected_skills))
@@ -126,7 +126,7 @@ def generate_dataset(num_resumes=200):
     """Generate a dataset of synthetic resumes"""
     dataset = []
 
-    # Generate balanced dataset
+    
     for level in ['junior', 'mid', 'senior']:
         count = num_resumes // 3
         for i in range(count):
@@ -140,13 +140,13 @@ if __name__ == "__main__":
     print("Generating synthetic resume dataset...")
     dataset = generate_dataset(num_resumes=200)
 
-    # Save to file
+    
     with open('data/synthetic_resumes.json', 'w') as f:
         json.dump(dataset, f, indent=2)
 
     print(f"Generated {len(dataset)} synthetic resumes")
     print(f"Saved to data/synthetic_resumes.json")
 
-    # Print sample
+    
     print("\nSample Resume:")
     print(json.dumps(dataset[0], indent=2))

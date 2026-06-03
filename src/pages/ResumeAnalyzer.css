@@ -1,9 +1,6 @@
-/* ═══════════════════════════════════════════════════════════
-   RESUME ANALYZER — CREATIVE REDESIGN
-   Extends Dashboard.css
-═══════════════════════════════════════════════════════════ */
 
-/* ─── UPLOAD PHASE ──────────────────────────────────────── */
+
+
 .ra-upload-phase {
   display: flex;
   flex-direction: column;
@@ -11,7 +8,7 @@
   padding: 0.5rem 0;
 }
 
-/* Drag & Drop Zone */
+
 .ra-dropzone {
   position: relative;
   border: 2px dashed rgba(139, 92, 246, 0.25);
@@ -61,7 +58,7 @@
   background: rgba(16, 185, 129, 0.04);
 }
 
-/* Drop icon */
+
 .ra-drop-icon {
   font-size: 3.5rem;
   animation: float 3s ease-in-out infinite;
@@ -102,7 +99,7 @@
   color: var(--text-muted);
 }
 
-/* File selected state */
+
 .ra-file-selected {
   display: flex;
   align-items: center;
@@ -139,7 +136,7 @@
   font-size: 1.5rem;
 }
 
-/* Analyze button */
+
 .ra-analyze-btn {
   display: flex;
   align-items: center;
@@ -163,7 +160,7 @@
   box-shadow: 0 12px 40px rgba(139, 92, 246, 0.6);
 }
 
-/* Divider */
+
 .ra-divider {
   display: flex;
   align-items: center;
@@ -181,7 +178,7 @@
   background: rgba(255, 255, 255, 0.07);
 }
 
-/* Preset Cards */
+
 .ra-presets-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -236,7 +233,7 @@
   flex-shrink: 0;
 }
 
-/* ─── SCANNING PHASE ────────────────────────────────────── */
+
 .ra-scanning-phase {
   display: flex;
   flex-direction: column;
@@ -262,7 +259,7 @@
   color: var(--text-muted);
 }
 
-/* Pulse ring animation */
+
 .ra-scan-pulse {
   position: relative;
   width: 80px;
@@ -291,7 +288,7 @@
   100% { transform: scale(2); opacity: 0; }
 }
 
-/* Progress track */
+
 .ra-progress-track {
   width: 100%;
   height: 6px;
@@ -315,7 +312,7 @@
   margin-top: -0.75rem;
 }
 
-/* Steps list */
+
 .ra-steps-list {
   display: flex;
   flex-direction: column;
@@ -376,14 +373,14 @@
   font-weight: 500;
 }
 
-/* ─── RESULTS PHASE ─────────────────────────────────────── */
+
 .ra-results-phase {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Hero result banner */
+
 .ra-result-hero {
   display: flex;
   align-items: flex-start;
@@ -430,7 +427,7 @@
   max-width: 300px;
 }
 
-/* Market stats */
+
 .ra-market-stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -466,7 +463,7 @@
   letter-spacing: 0.06em;
 }
 
-/* ─── TABS ──────────────────────────────────────────────── */
+
 .ra-tabs {
   display: flex;
   gap: 0.5rem;
@@ -502,14 +499,14 @@
   box-shadow: 0 2px 12px rgba(139, 92, 246, 0.15);
 }
 
-/* ─── TAB CONTENT ───────────────────────────────────────── */
+
 .ra-tab-content {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-/* Skills row */
+
 .ra-skills-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -576,7 +573,7 @@
   flex-shrink: 0;
 }
 
-/* Companies */
+
 .ra-companies-card h4 {
   font-size: 0.875rem;
   font-weight: 700;
@@ -616,7 +613,7 @@
   font-style: italic;
 }
 
-/* ─── COURSES GRID ──────────────────────────────────────── */
+
 .ra-courses-intro {
   font-size: 0.875rem;
   color: var(--text-muted);
@@ -632,7 +629,7 @@
   gap: 1rem;
 }
 
-/* Course Card */
+
 .course-card {
   display: flex;
   flex-direction: column;
@@ -748,7 +745,7 @@
   color: var(--text-faint);
 }
 
-/* ─── ROADMAP ───────────────────────────────────────────── */
+
 .ra-roadmap-card h4 {
   font-size: 0.95rem;
   font-weight: 700;
@@ -824,7 +821,7 @@
   line-height: 1.55;
 }
 
-/* ─── ACTION BAR ────────────────────────────────────────── */
+
 .ra-action-bar {
   display: flex;
   gap: 1rem;
@@ -866,7 +863,7 @@
   color: white;
 }
 
-/* ─── RESPONSIVE ────────────────────────────────────────── */
+
 @media (max-width: 768px) {
   .ra-presets-grid {
     grid-template-columns: 1fr;

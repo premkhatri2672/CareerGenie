@@ -1,4 +1,4 @@
-// pages/Login.jsx
+
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import { signInWithGoogle } from "../utils/auth"
@@ -36,12 +36,12 @@ const Login = () => {
 
   return (
     <div className="auth-page">
-      {/* Background orbs */}
+      {}
       <div className="auth-orb auth-orb-1" />
       <div className="auth-orb auth-orb-2" />
       <div className="auth-orb auth-orb-3" />
 
-      {/* Back home link */}
+      {}
       <Link to="/" className="auth-back-home">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
@@ -55,14 +55,14 @@ const Login = () => {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       >
-        {/* Header */}
+        {}
         <div className="auth-header">
           <span className="auth-logo">🧞</span>
           <h1 className="auth-title">Welcome Back</h1>
           <p className="auth-subtitle">Sign in to continue your career journey</p>
         </div>
 
-        {/* Google OAuth */}
+        {}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <motion.button
             type="button"

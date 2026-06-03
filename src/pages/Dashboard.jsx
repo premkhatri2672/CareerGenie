@@ -8,7 +8,7 @@ import roadmapIcon from "../assets/roadmap.png"
 
 import "./Dashboard.css"
 
-// Role skills mapping
+
 const ROLE_SKILLS = {
   frontend: ["React", "JavaScript", "TypeScript", "HTML", "CSS", "Redux", "Webpack", "Jest", "TailwindCSS", "Next.js", "Vue", "Angular", "Sass"],
   backend: ["Node.js", "Express", "Python", "Django", "PostgreSQL", "MongoDB", "Redis", "Docker", "REST APIs", "GraphQL", "SQL", "Java", "Spring Boot"],
@@ -18,7 +18,7 @@ const ROLE_SKILLS = {
   qa: ["Selenium", "Cypress", "QA Testing", "Jest", "Manual Testing", "Automation", "Postman"]
 }
 
-// Get required skills for a role
+
 const getRequiredSkills = (role) => {
   const r = role?.toLowerCase() || ''
   if (r.includes('front') || r.includes('react') || r.includes('web') || r.includes('ui')) return ROLE_SKILLS.frontend
@@ -27,7 +27,7 @@ const getRequiredSkills = (role) => {
   if (r.includes('devops') || r.includes('cloud') || r.includes('aws') || r.includes('infra')) return ROLE_SKILLS.devops
   if (r.includes('mobil') || r.includes('ios') || r.includes('android')) return ROLE_SKILLS.mobile
   if (r.includes('qa') || r.includes('test') || r.includes('automation')) return ROLE_SKILLS.qa
-  return ROLE_SKILLS.frontend // default
+  return ROLE_SKILLS.frontend 
 }
 
 const Dashboard = () => {
@@ -62,7 +62,7 @@ const Dashboard = () => {
   const latestScore = latestAnalysis?.score || 0
   const rolesAnalyzed = [...new Set(analyses.map(a => a.role_transition).filter(Boolean))]
 
-  // Parse missing skills from latest analysis
+  
   let missingSkills = []
   if (latestAnalysis) {
     try {
@@ -75,8 +75,8 @@ const Dashboard = () => {
     }
   }
 
-  // Display model-persisted gaps as “Skills Required”.
-  // We do not reliably persist “found skills” in the analyses table, so we cannot compute accurate strengths here.
+  
+  
   const requiredSkills = missingSkills
   const yourStrengths = []
 
@@ -96,7 +96,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      {/* ─── HEADER ─── */}
+      {}
       <div className="dash-header">
         <div className="dash-header-left">
           <div className="greeting-text">
@@ -121,7 +121,7 @@ const Dashboard = () => {
       </div>
 
       <div className="dash-content">
-        {/* ─── EMPTY STATE ─── */}
+        {}
         {!hasData && (
           <div className="empty-state-card">
             <div className="empty-icon">🚀</div>
@@ -138,10 +138,10 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* ─── MAIN CONTENT ─── */}
+        {}
         {hasData && (
           <>
-            {/* Stats Row */}
+            {}
             <div className="stats-row">
               <div className={`metric-card ${animateIn ? 'animate-in' : ''}`}>
                 <span className="metric-value">{totalAnalyses}</span>
@@ -157,7 +157,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Latest Analysis Card */}
+            {}
             {latestAnalysis && (
               <div className="glass-card latest-analysis-card">
                 <h3>Latest Analysis: {latestAnalysis.role_transition || 'Unknown Role'}</h3>
@@ -175,7 +175,7 @@ const Dashboard = () => {
               </div>
             )}
 
-            {/* Skills Required & Key Strengths */}
+            {}
             {latestAnalysis && (
               <div className="skills-insights-row">
                 <div className="glass-card skills-card">
@@ -209,7 +209,7 @@ const Dashboard = () => {
               </div>
             )}
 
-            {/* Quick Actions */}
+            {}
             <div className="quick-actions-section">
               <h3>Quick Actions</h3>
               <div className="quick-actions-grid">
@@ -232,7 +232,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Recent Analyses */}
+            {}
             <div className="glass-card">
               <div className="card-header">
                 <h3>Recent Analyses</h3>

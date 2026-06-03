@@ -6,7 +6,7 @@ import "./Sidebar.css"
 import { useSidebar } from '../contexts/SidebarContext.js'
 import { useAuth } from '../contexts/AuthContext'
 
-// Inline SVG icons
+
 const DashboardIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -72,11 +72,11 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Overlay for mobile */}
+      {}
       {isSidebarOpen && <div className="sidebar-overlay" onClick={closeSidebar} />}
 
       <aside className={`sidebar ${isSidebarOpen ? 'sidebar--open' : 'sidebar--closed'}`}>
-        {/* ─── HEADER ─────────────────────── */}
+        {}
         <div className="sidebar-header">
           <button
             className="sidebar-logo-btn"
@@ -97,10 +97,10 @@ const Sidebar = () => {
           </button>
         </div>
 
-        {/* ─── NAV SECTION LABEL ──────────── */}
+        {}
         <p className="sidebar-section-label">Navigation</p>
 
-        {/* ─── NAV LINKS ──────────────────── */}
+        {}
         <nav className="sidebar-nav">
           {navItems.map(({ to, label, Icon }) => (
             <NavLink
@@ -116,7 +116,7 @@ const Sidebar = () => {
           ))}
         </nav>
 
-        {/* ─── USER CARD ──────────────────── */}
+        {}
         <div className="sidebar-user" onClick={() => navigate('/profile')}>
           <div className="sidebar-user-avatar">
             <img src={profileImg} alt="user" />

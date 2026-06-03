@@ -45,7 +45,7 @@ const Profile = () => {
 
   return (
     <div className="dashboard">
-      {/* ─── HEADER ─── */}
+      {}
       <div className="dash-header">
         <div className="dash-header-left">
           <div className="greeting-text">
@@ -58,7 +58,7 @@ const Profile = () => {
       </div>
 
       <div className="dash-content">
-        {/* ─── PROFILE CARD ─── */}
+        {}
         <div className="glass-card profile-main-card">
           <p className="profile-section-title">Account Info</p>
           <div className="profile-header-wrap">
@@ -114,7 +114,7 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* ─── QUICK METRICS ─── */}
+        {}
         <div className="stats-grid-4">
           {[
             { icon: '📊', value: '12', label: 'Analyses', color: 'rgba(139, 92, 246, 0.15)', textColor: '#a78bfa' },
@@ -137,7 +137,7 @@ const Profile = () => {
           ))}
         </div>
 
-        {/* ─── DANGER ZONE ─── */}
+        {}
         <div className="glass-card">
           <p className="profile-section-title">⚠️ Danger Zone</p>
           <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>

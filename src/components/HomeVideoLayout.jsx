@@ -16,7 +16,7 @@ const HomeVideoLayout = ({ children }) => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-      // Initial timing for first meaningful frame
+      
       tl.fromTo(
         videoRef.current,
         { opacity: 0, scale: 1.12, filter: 'blur(4px) brightness(0.75)' },
@@ -29,7 +29,7 @@ const HomeVideoLayout = ({ children }) => {
         duration: 0.6
       })
 
-      // Subtle drift
+      
       gsap.to(videoRef.current, {
         yPercent: -2,
         duration: 4,
@@ -38,14 +38,14 @@ const HomeVideoLayout = ({ children }) => {
         ease: 'sine.inOut'
       })
 
-      // Scroll sync for the full home sections
+      
       const onScroll = () => {
         const rect = wrapperRef.current?.getBoundingClientRect()
         if (!rect) return
 
-        // progress 0..1 while wrapper is in view
+        
         const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / (rect.height + window.innerHeight)))
-        const y = (progress - 0.5) * -45 // px
+        const y = (progress - 0.5) * -45 
 
         gsap.to(videoRef.current, {
           y,

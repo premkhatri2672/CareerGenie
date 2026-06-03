@@ -1,6 +1,6 @@
-/* App.css – legacy classes kept for backward compat */
 
-/* .app and .main-content are now replaced by .app-shell and .app-main in Dashboard.css */
+
+
 .app {
   display: flex;
   background-color: var(--bg-dark);

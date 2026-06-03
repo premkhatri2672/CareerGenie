@@ -33,12 +33,12 @@ const App = () => {
   return (
     <div>
 
-      {/* Navbar hide on dashboard pages */}
+      {}
       {!hideNavbar && <Navbar />}
 
       <Routes>
 
-        {/* HOME */}
+        {}
         <Route path="/" element={
           <>
             <Hero />
@@ -47,11 +47,11 @@ const App = () => {
           </>
         } />
 
-        {/* ✅ LOGIN & SIGNUP */}
+        {}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* ✅ PROTECTED ROUTES */}
+        {}
 
         <Route path="/dashboard" element={
           <ProtectedRoute>

@@ -69,12 +69,12 @@ const Hero = () => {
 
   return (
     <section ref={heroRef} className="hero">
-      {/* Ambient orbs */}
+      {}
       <div className="hero-orb hero-orb-1" />
       <div className="hero-orb hero-orb-2" />
       <div className="hero-orb hero-orb-3" />
 
-      {/* Background video */}
+      {}
       <video
         ref={videoRef}
         className="hero-video"
@@ -85,36 +85,36 @@ const Hero = () => {
         playsInline
       />
 
-      {/* Dark overlay */}
+      {}
       <div className="hero-overlay" />
 
-      {/* Content */}
+      {}
       <motion.div
         className="hero-content"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Badge */}
+        {}
         <motion.div className="hero-badge" variants={itemVariants}>
           <span className="hero-badge-dot" />
           <span>AI-Powered Career Intelligence</span>
         </motion.div>
 
-        {/* Headline */}
+        {}
         <motion.h1 className="hero-title" variants={itemVariants}>
           Your AI Career
           <br />
           <span className="gradient-text">Genie Awaits</span>
         </motion.h1>
 
-        {/* Sub-headline */}
+        {}
         <motion.p className="hero-subtitle" variants={itemVariants}>
           Discover your ideal career path with intelligent skill analysis,
           personalized roadmaps, and real-time gap detection — all powered by AI.
         </motion.p>
 
-        {/* CTAs */}
+        {}
         <motion.div className="hero-ctas" variants={itemVariants}>
           <motion.button
             className="hero-btn-primary"
@@ -137,7 +137,7 @@ const Hero = () => {
           </motion.button>
         </motion.div>
 
-        {/* Stats */}
+        {}
         <motion.div className="hero-stats" variants={itemVariants}>
           {stats.map((stat, i) => (
             <div key={i} className="hero-stat">
@@ -148,7 +148,7 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
+      {}
       <motion.div
         className="scroll-indicator"
         initial={{ opacity: 0 }}

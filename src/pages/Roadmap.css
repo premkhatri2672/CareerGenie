@@ -1,5 +1,5 @@
-/* Premium Roadmap Page - Specific Overrides */
-/* Base styling like .dashboard, .dash-header, .dash-content are in Dashboard.css */
+
+
 
 .roadmap-timeline {
   display: flex;
@@ -165,7 +165,7 @@
   }
 }
 
-/* ─── TECH ROADMAP GRID ─── */
+
 .tech-roadmap-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -278,7 +278,7 @@
   transform: translateX(4px);
 }
 
-/* New: recommended video buttons */
+
 .tech-videos .recommended-video-btn,
 .tech-videos .recommended-video-btn:visited {
   font-size: 0.8rem;
@@ -318,7 +318,7 @@
   }
 }
 
-/* Status badge styles */
+
 .tech-status-badge {
   font-size: 0.7rem;
   padding: 0.15rem 0.45rem;

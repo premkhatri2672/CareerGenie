@@ -1,4 +1,4 @@
-/* ─── SIDEBAR BASE ──────────────────────────────────────── */
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -20,7 +20,7 @@
 .sidebar--open  { transform: translateX(0); }
 .sidebar--closed { transform: translateX(-100%); }
 
-/* Mobile overlay */
+
 .sidebar-overlay {
   position: fixed;
   inset: 0;
@@ -29,7 +29,7 @@
   backdrop-filter: blur(4px);
 }
 
-/* ─── HEADER ────────────────────────────────────────────── */
+
 .sidebar-header {
   display: flex;
   align-items: center;
@@ -75,7 +75,7 @@
   color: #f87171;
 }
 
-/* ─── SECTION LABEL ─────────────────────────────────────── */
+
 .sidebar-section-label {
   font-size: 0.68rem;
   font-weight: 700;
@@ -85,7 +85,7 @@
   padding: 1.25rem 1.5rem 0.5rem;
 }
 
-/* ─── NAV ───────────────────────────────────────────────── */
+
 .sidebar-nav {
   flex: 1;
   display: flex;
@@ -96,7 +96,7 @@
   overflow-x: hidden;
 }
 
-/* ─── LINK ──────────────────────────────────────────────── */
+
 .sidelink {
   position: relative;
   display: flex;
@@ -141,7 +141,7 @@
   text-overflow: ellipsis;
 }
 
-/* Active indicator bar */
+
 .sidelink-active-indicator {
   position: absolute;
   right: 0;
@@ -154,7 +154,7 @@
   transition: opacity 0.2s ease;
 }
 
-/* ─── ACTIVE STATE ──────────────────────────────────────── */
+
 .sidelink--active {
   background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(99, 102, 241, 0.15) 50%, rgba(6, 182, 212, 0.1) 100%);
   border-color: rgba(139, 92, 246, 0.25);
@@ -171,7 +171,7 @@
   color: #a78bfa;
 }
 
-/* ─── USER CARD ─────────────────────────────────────────── */
+
 .sidebar-user {
   display: flex;
   align-items: center;

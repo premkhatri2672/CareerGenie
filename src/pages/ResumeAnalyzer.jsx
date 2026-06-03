@@ -8,7 +8,7 @@ import { supabase } from '../lib/supabase.js'
 import './Dashboard.css'
 import './ResumeAnalyzer.css'
 
-// ─── PLATFORM BADGE COLORS ────────────────────────────────
+
 const PLATFORM_COLORS = {
   YouTube: { bg: 'rgba(255, 0, 0, 0.15)', border: 'rgba(255, 0, 0, 0.3)', text: '#ff4d4d' },
   Udemy: { bg: 'rgba(167, 99, 247, 0.15)', border: 'rgba(167, 99, 247, 0.3)', text: '#a763f7' },
@@ -16,7 +16,7 @@ const PLATFORM_COLORS = {
   freeCodeCamp: { bg: 'rgba(14, 166, 120, 0.15)', border: 'rgba(14, 166, 120, 0.3)', text: '#0ea678' },
 }
 
-// ─── SCAN STEPS ───────────────────────────────────────────
+
 const SCAN_STEPS = [
   { icon: '📂', label: 'Parsing document structure' },
   { icon: '🔍', label: 'Extracting skills & experience' },
@@ -25,7 +25,7 @@ const SCAN_STEPS = [
   { icon: '✅', label: 'Generating your career report' },
 ]
 
-// ─── SAMPLE PRESETS ───────────────────────────────────────
+
 const SAMPLE_PRESETS = [
   {
     emoji: '⚛️', role: 'Senior React Developer', score: 88, level: 'Mid-level',
@@ -53,7 +53,7 @@ const SAMPLE_PRESETS = [
   },
 ]
 
-// ─── SCORE RING SVG ───────────────────────────────────────
+
 const ScoreRing = ({ score, size = 140 }) => {
   const r = (size - 16) / 2
   const circ = 2 * Math.PI * r
@@ -82,7 +82,7 @@ const ScoreRing = ({ score, size = 140 }) => {
   )
 }
 
-// ─── COURSE CARD ──────────────────────────────────────────
+
 const CourseCard = ({ course }) => {
   const colors = PLATFORM_COLORS[course.platform] || PLATFORM_COLORS['Udemy']
   return (
@@ -116,7 +116,7 @@ const ResumeAnalyzer = () => {
   const { user } = useAuth()
   const dropRef = useRef(null)
 
-  const [phase, setPhase] = useState('upload') // upload | scanning | results
+  const [phase, setPhase] = useState('upload') 
   const [resumeFile, setResumeFile] = useState(null)
   const [isDragging, setIsDragging] = useState(false)
   const [scanStep, setScanStep] = useState(-1)
@@ -124,7 +124,7 @@ const ResumeAnalyzer = () => {
   const [analysis, setAnalysis] = useState(null)
   const [activeTab, setActiveTab] = useState('overview')
 
-  // ─── DRAG & DROP ────────────────────────────────────────
+  
   const onDragOver = useCallback(e => { e.preventDefault(); setIsDragging(true) }, [])
   const onDragLeave = useCallback(() => setIsDragging(false), [])
   const onDrop = useCallback(e => {
@@ -135,17 +135,17 @@ const ResumeAnalyzer = () => {
     }
   }, [])
 
-  // ─── SCAN ANIMATION ─────────────────────────────────────
+  
   const runScanAnimation = async (analysisPromise) => {
     setPhase('scanning')
     setScanStep(0)
     setScanProgress(0)
 
-    // Run the animation steps
+    
     for (let i = 0; i < SCAN_STEPS.length; i++) {
       setScanStep(i)
       const targetProgress = ((i + 1) / SCAN_STEPS.length) * 100
-      // Smooth progress fill
+      
       for (let p = (i / SCAN_STEPS.length) * 100; p <= targetProgress; p += 2) {
         await new Promise(r => setTimeout(r, 20))
         setScanProgress(p)
@@ -166,7 +166,7 @@ const ResumeAnalyzer = () => {
     }
   }
 
-  // ─── ANALYZE UPLOADED RESUME ─────────────────────────────
+  
   const handleAnalyzeResume = async () => {
     if (!resumeFile) return
 
@@ -192,7 +192,7 @@ const ResumeAnalyzer = () => {
     await runScanAnimation(analysisPromise)
   }
 
-  // ─── USE SAMPLE PRESET ───────────────────────────────────
+  
   const handleSamplePreset = async (preset) => {
     const analysisPromise = (async () => {
       const rich = generateRichAnalysis(preset.role, '', preset.userSkills)
@@ -209,7 +209,7 @@ const ResumeAnalyzer = () => {
         coursesData: rich.coursesData,
       }
 
-      // Save to Supabase
+      
       const userId = user?.id
       if (userId) {
         try {
@@ -239,7 +239,7 @@ const ResumeAnalyzer = () => {
 
   return (
     <div className="dashboard">
-      {/* ─── HEADER ─── */}
+      {}
       <div className="dash-header">
         <div className="dash-header-left">
           <div>
@@ -260,14 +260,12 @@ const ResumeAnalyzer = () => {
 
       <AnimatePresence mode="wait">
 
-        {/* ═══════════════════════════════════════════════════════
-             PHASE 1: UPLOAD
-        ═══════════════════════════════════════════════════════ */}
+        {}
         {phase === 'upload' && (
           <motion.div key="upload" className="ra-upload-phase"
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.3 }}>
 
-            {/* Drag & Drop Zone */}
+            {}
             <div
               ref={dropRef}
               className={`ra-dropzone glass-card ${isDragging ? 'ra-dropzone--drag' : ''} ${resumeFile ? 'ra-dropzone--filled' : ''}`}
@@ -311,10 +309,10 @@ const ResumeAnalyzer = () => {
               </motion.button>
             )}
 
-            {/* Divider */}
+            {}
             <div className="ra-divider"><span>or try a sample profile</span></div>
 
-            {/* Preset Cards */}
+            {}
             <div className="ra-presets-grid">
               {SAMPLE_PRESETS.map((preset, i) => (
                 <motion.button
@@ -339,9 +337,7 @@ const ResumeAnalyzer = () => {
           </motion.div>
         )}
 
-        {/* ═══════════════════════════════════════════════════════
-             PHASE 2: SCANNING
-        ═══════════════════════════════════════════════════════ */}
+        {}
         {phase === 'scanning' && (
           <motion.div key="scanning" className="ra-scanning-phase glass-card"
             initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}>
@@ -355,13 +351,13 @@ const ResumeAnalyzer = () => {
               <p>Powered by CareerGenie ML Engine</p>
             </div>
 
-            {/* Progress bar */}
+            {}
             <div className="ra-progress-track">
               <div className="ra-progress-fill" style={{ width: `${scanProgress}%` }} />
             </div>
             <p className="ra-progress-pct">{Math.round(scanProgress)}% complete</p>
 
-            {/* Steps */}
+            {}
             <div className="ra-steps-list">
               {SCAN_STEPS.map((step, i) => (
                 <div key={i} className={`ra-step ${i < scanStep ? 'ra-step--done' : i === scanStep ? 'ra-step--active' : ''}`}>
@@ -375,14 +371,12 @@ const ResumeAnalyzer = () => {
           </motion.div>
         )}
 
-        {/* ═══════════════════════════════════════════════════════
-             PHASE 3: RESULTS
-        ═══════════════════════════════════════════════════════ */}
+        {}
         {phase === 'results' && analysis && (
           <motion.div key="results" className="ra-results-phase"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
 
-            {/* ── HERO RESULT BAR ── */}
+            {}
             <div className="ra-result-hero glass-card">
               <div className="ra-result-hero-left">
                 <ScoreRing score={analysis.score} size={140} />
@@ -417,7 +411,7 @@ const ResumeAnalyzer = () => {
               </div>
             </div>
 
-            {/* ── TABS ── */}
+            {}
             <div className="ra-tabs">
               {['overview', 'courses', 'roadmap'].map(tab => (
                 <button key={tab} className={`ra-tab ${activeTab === tab ? 'ra-tab--active' : ''}`} onClick={() => setActiveTab(tab)}>
@@ -427,12 +421,12 @@ const ResumeAnalyzer = () => {
             </div>
 
             <AnimatePresence mode="wait">
-              {/* ── TAB: OVERVIEW ── */}
+              {}
               {activeTab === 'overview' && (
                 <motion.div key="overview" className="ra-tab-content"
                   initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }}>
                   <div className="ra-skills-row">
-                    {/* Strengths */}
+                    {}
                     <div className="glass-card ra-skills-card">
                       <h4>✅ Your Strengths ({analysis.userSkills?.length || 0})</h4>
                       <div className="ra-skill-chips">
@@ -445,7 +439,7 @@ const ResumeAnalyzer = () => {
                       </div>
                     </div>
 
-                    {/* Missing Skills with learning time */}
+                    {}
                     <div className="glass-card ra-skills-card">
                       <h4>⚡ Skills to Learn ({analysis.missingSkills?.length || 0})</h4>
                       <div className="ra-missing-list">
@@ -459,7 +453,7 @@ const ResumeAnalyzer = () => {
                     </div>
                   </div>
 
-                  {/* Top Companies */}
+                  {}
                   <div className="glass-card ra-companies-card">
                     <h4>🏢 Top Companies Hiring</h4>
                     <div className="ra-companies-row">
@@ -472,7 +466,7 @@ const ResumeAnalyzer = () => {
                 </motion.div>
               )}
 
-              {/* ── TAB: COURSES ── */}
+              {}
               {activeTab === 'courses' && (
                 <motion.div key="courses" className="ra-tab-content"
                   initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }}>
@@ -492,7 +486,7 @@ const ResumeAnalyzer = () => {
                 </motion.div>
               )}
 
-              {/* ── TAB: ROADMAP ── */}
+              {}
               {activeTab === 'roadmap' && (
                 <motion.div key="roadmap" className="ra-tab-content"
                   initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }}>
@@ -520,7 +514,7 @@ const ResumeAnalyzer = () => {
               )}
             </AnimatePresence>
 
-            {/* ── ACTION BAR ── */}
+            {}
             <div className="ra-action-bar">
               <motion.button
                 className="ra-cta-btn"

@@ -1,4 +1,4 @@
-/* ─── AUTH PAGE ─────────────────────────────────────────── */
+
 .auth-page {
   min-height: 100vh;
   display: flex;
@@ -10,7 +10,7 @@
   padding: 1.5rem;
 }
 
-/* ─── BACKGROUND ORBS ───────────────────────────────────── */
+
 .auth-orb {
   position: absolute;
   border-radius: 50%;
@@ -46,7 +46,7 @@
   animation: orb-float-1 20s ease-in-out infinite reverse;
 }
 
-/* ─── AUTH CARD ─────────────────────────────────────────── */
+
 .auth-card {
   position: relative;
   z-index: 1;
@@ -72,7 +72,7 @@
   background: var(--primary-gradient);
 }
 
-/* ─── AUTH HEADER ───────────────────────────────────────── */
+
 .auth-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -99,7 +99,7 @@
   line-height: 1.6;
 }
 
-/* ─── FORM ──────────────────────────────────────────────── */
+
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -149,7 +149,7 @@
   cursor: not-allowed;
 }
 
-/* Password container */
+
 .auth-password-wrap {
   position: relative;
 }
@@ -177,7 +177,7 @@
   color: white;
 }
 
-/* Password strength bar */
+
 .password-strength {
   display: flex;
   gap: 4px;
@@ -204,7 +204,7 @@
   text-align: right;
 }
 
-/* ─── BUTTONS ───────────────────────────────────────────── */
+
 .auth-btn-primary {
   width: 100%;
   padding: 0.9rem 1.5rem;
@@ -286,7 +286,7 @@
   cursor: not-allowed;
 }
 
-/* ─── FOOTER TEXT ───────────────────────────────────────── */
+
 .auth-footer-text {
   text-align: center;
   margin-top: 1.25rem;
@@ -305,7 +305,7 @@
   color: white;
 }
 
-/* ─── EMAIL CONFIRMATION ─────────────────────────────────── */
+
 .auth-confirm {
   text-align: center;
   padding: 1rem 0;
@@ -333,7 +333,7 @@
   margin-bottom: 0.5rem;
 }
 
-/* ─── BACK TO HOME ──────────────────────────────────────── */
+
 .auth-back-home {
   position: absolute;
   top: 1.5rem;

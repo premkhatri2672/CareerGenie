@@ -1,4 +1,4 @@
-/* ─── ABOUT ─────────────────────────────────────────────── */
+
 .about {
   position: relative;
   background: var(--bg-dark);
@@ -38,7 +38,7 @@
   padding: 5rem 1.5rem;
 }
 
-/* ─── SECTION HEADER ────────────────────────────────────── */
+
 .section-header {
   text-align: center;
   margin-bottom: 3.5rem;
@@ -76,7 +76,7 @@
   line-height: 1.7;
 }
 
-/* ─── STEPS GRID ────────────────────────────────────────── */
+
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -150,7 +150,7 @@
   line-height: 1.65;
 }
 
-/* ─── STATS BAR ─────────────────────────────────────────── */
+
 .stats-bar {
   position: relative;
   z-index: 1;
@@ -193,7 +193,7 @@
   letter-spacing: 0.08em;
 }
 
-/* ─── FEATURES GRID ─────────────────────────────────────── */
+
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -241,7 +241,7 @@
   line-height: 1.65;
 }
 
-/* ─── MISSION ───────────────────────────────────────────── */
+
 .mission-section {
   position: relative;
   z-index: 1;
@@ -292,7 +292,7 @@
   letter-spacing: 0.04em;
 }
 
-/* ─── RESPONSIVE ────────────────────────────────────────── */
+
 @media (max-width: 1024px) {
   .steps-grid {
     grid-template-columns: repeat(2, 1fr);

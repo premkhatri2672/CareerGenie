@@ -12,7 +12,7 @@ CORS(app)
 
 analyzer = None
 
-# ─── ROLE KNOWLEDGE BASE (mirrors ai.js) ─────────────────
+
 ROLE_KNOWLEDGE_BASE = {
     'frontend': {
         'title': 'Frontend Developer',
@@ -75,7 +75,7 @@ SKILL_LEARNING_WEEKS = {
     'Flutter': 6, 'Swift': 8, 'Kotlin': 6, 'React Native': 5,
 }
 
-# Curated resource map with real YouTube video IDs
+
 SKILL_RESOURCES = {
     'react': [{'title': 'React JS Crash Course 2024', 'videoId': 'w7ejDZ8SWv8', 'platform': 'YouTube', 'url': 'https://www.youtube.com/watch?v=w7ejDZ8SWv8', 'instructor': 'Traversy Media', 'duration': '1.5h', 'rating': 4.9}],
     'javascript': [{'title': 'JavaScript Tutorial Full Course - Beginner to Pro', 'videoId': 'EerdGm-ehJQ', 'platform': 'YouTube', 'url': 'https://www.youtube.com/watch?v=EerdGm-ehJQ', 'instructor': 'SuperSimpleDev', 'duration': '8h', 'rating': 4.9}],
@@ -143,12 +143,12 @@ def analyze_resume():
         role_data = ROLE_KNOWLEDGE_BASE.get(role_key, ROLE_KNOWLEDGE_BASE['backend'])
         required_skills = role_data['requiredSkills']
 
-        # Extract skills from resume text
+        
         text_lower = resume_text.lower()
         user_skills = [s for s in required_skills if s.lower() in text_lower]
         missing_skills = [s for s in required_skills if s.lower() not in text_lower]
 
-        # Score
+        
         match_count = len(user_skills)
         total_count = len(required_skills)
         has_all = len(missing_skills) == 0 and total_count > 2
@@ -170,11 +170,11 @@ def analyze_resume():
         salary_key = 'senior' if score >= 80 else 'mid' if score >= 60 else 'junior'
         salary = role_data['salary'][salary_key]
 
-        # Learning time
+        
         missing_with_time = [{'skill': s, 'weeks': SKILL_LEARNING_WEEKS.get(s, 4)} for s in missing_skills]
         total_weeks = sum(m['weeks'] for m in missing_with_time)
 
-        # Roadmap
+        
         if score < 58:
             roadmap = [
                 f"🌱 Start with fundamentals: Master {', '.join(missing_skills[:2]) if missing_skills else 'core concepts'} first",
@@ -203,7 +203,7 @@ def analyze_resume():
                 f"🎯 Target: Senior {role_data['title']} at {role_data['topCompanies'][0]}"
             ]
 
-        # Courses for missing skills
+        
         courses_data = []
         for skill in missing_skills[:4]:
             skill_lower = skill.lower()

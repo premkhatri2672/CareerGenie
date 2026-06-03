@@ -1,4 +1,4 @@
-// pages/Signup.jsx
+
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from "react-router-dom"
 import { signup, signInWithGoogle } from "../utils/auth"
@@ -71,7 +71,7 @@ const Signup = () => {
 
   const strength = getPasswordStrength(password)
 
-  // ─── Email confirmation screen ───
+  
   if (emailSent) {
     return (
       <div className="auth-page">
@@ -131,7 +131,7 @@ const Signup = () => {
         </div>
 
         <form className="auth-form" onSubmit={handleSignup}>
-          {/* Google first */}
+          {}
           <motion.button
             type="button"
             onClick={handleGoogleSignup}
@@ -146,7 +146,7 @@ const Signup = () => {
 
           <div className="auth-divider"><span>or</span></div>
 
-          {/* Name */}
+          {}
           <div className="auth-field">
             <label className="auth-label">Full Name</label>
             <input
@@ -160,7 +160,7 @@ const Signup = () => {
             />
           </div>
 
-          {/* Email */}
+          {}
           <div className="auth-field">
             <label className="auth-label">Email Address</label>
             <input
@@ -174,7 +174,7 @@ const Signup = () => {
             />
           </div>
 
-          {/* Password */}
+          {}
           <div className="auth-field">
             <label className="auth-label">Password</label>
             <div className="auth-password-wrap">

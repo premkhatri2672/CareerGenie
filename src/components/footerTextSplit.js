@@ -5,7 +5,7 @@ export function splitTextToSpans(el) {
 
   const spans = []
   for (const ch of text) {
-    // keep spaces
+    
     const span = document.createElement('span')
     span.textContent = ch === ' ' ? '\u00A0' : ch
     span.className = 'footer-char'

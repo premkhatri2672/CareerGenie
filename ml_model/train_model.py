@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, accuracy_score
 import os
 
-# All possible skills for feature extraction
+
 ALL_SKILLS = [
     "Python", "JavaScript", "Java", "C++", "C#", "Go", "Rust", "Ruby", "PHP", "Swift",
     "Kotlin", "TypeScript", "React", "Vue.js", "Angular", "Node.js", "Express",
@@ -43,42 +43,42 @@ class ResumeAnalyzer:
         """Extract features from resume data"""
         features = {}
 
-        # Skill-based features
+        
         technical_skills = resume_data.get('technical_skills', []) or []
         missing_skills = resume_data.get('missing_skills', []) or []
         soft_skills = resume_data.get('soft_skills', []) or []
 
 
-        # Count of skills
+        
         features['num_technical_skills'] = len(technical_skills)
         features['num_soft_skills'] = len(soft_skills)
         features['num_missing_skills'] = len(missing_skills)
 
-        # Experience features
+        
         experience = resume_data.get('experience', [])
         features['num_jobs'] = len(experience)
         total_months = sum(exp.get('duration_months', 0) for exp in experience)
         features['total_experience_months'] = total_months
         features['avg_job_duration'] = total_months / max(len(experience), 1)
 
-        # Education features
+        
         education = resume_data.get('education', {})
         features['gpa'] = education.get('gpa', 3.0)
         features['has_degree'] = 1 if education.get('degree') else 0
 
-        # Projects
+        
         projects = resume_data.get('projects', [])
         features['num_projects'] = len(projects)
 
-        # Certifications
+        
         certifications = resume_data.get('certifications', [])
         features['num_certifications'] = len(certifications)
 
-        # Skill diversity (unique technical skills / all skills)
+        
         total_skills = len(technical_skills) + len(soft_skills)
         features['skill_diversity'] = len(set(technical_skills)) / max(total_skills, 1)
 
-        # High-demand skills
+        
         high_demand = {"Python", "JavaScript", "React", "AWS", "Docker", "Kubernetes", "Machine Learning"}
         features['has_high_demand_skills'] = len(set(technical_skills) & high_demand)
 
@@ -114,15 +114,15 @@ class ResumeAnalyzer:
 
         print(f"Training on {len(X)} samples...")
 
-        # Train score prediction model
+        
         self.score_model = RandomForestRegressor(n_estimators=50, random_state=42, max_depth=10)
         self.score_model.fit(X, y_scores)
 
-        # Train level classification model
+        
         self.level_model = RandomForestClassifier(n_estimators=50, random_state=42, max_depth=10)
         self.level_model.fit(X, y_levels)
 
-        # Evaluate
+        
         score_pred = self.score_model.predict(X)
         level_pred = self.level_model.predict(X)
 
@@ -136,12 +136,12 @@ class ResumeAnalyzer:
 
     def predict(self, resume_text, target_role="Software Engineer"):
         """Predict score and analysis for a resume"""
-        # Parse resume text to extract basic structure
-        # For now, use keyword matching
+        
+        
         technical_skills = [skill for skill in ALL_SKILLS if skill.lower() in resume_text.lower()]
         soft_skills = [skill for skill in SOFT_SKILLS if skill.lower() in resume_text.lower()]
 
-        # Create a synthetic resume structure from extracted data
+        
         synthetic_resume = {
             'technical_skills': technical_skills,
             'soft_skills': soft_skills,
@@ -152,18 +152,18 @@ class ResumeAnalyzer:
             'education': {'gpa': 3.5}
         }
 
-        # Extract features
+        
         features = self.extract_features(synthetic_resume)
         X = self.features_to_vector(features)
 
-        # Predict
+        
         score = max(0, min(100, float(self.score_model.predict(X)[0])))
         level = ['Junior', 'Mid-level', 'Senior'][int(self.level_model.predict(X)[0])]
 
-        # Get missing skills
+        
         missing = synthetic_resume['missing_skills'][:5]
 
-        # Create roadmap
+        
         roadmap = [
             f"Master {missing[0]} (2-3 weeks)" if missing else "Strengthen core skills",
             "Build practical projects",
@@ -213,19 +213,19 @@ def random_count(min_val, max_val):
 
 
 if __name__ == "__main__":
-    # Load dataset
+    
     print("Loading synthetic dataset...")
     with open('data/synthetic_resumes.json', 'r') as f:
         dataset = json.load(f)
 
-    # Train model
+    
     analyzer = ResumeAnalyzer()
     analyzer.train(dataset)
 
-    # Save model
+    
     analyzer.save('models/resume_model.pkl')
 
-    # Test prediction
+    
     test_resume = """
     Software engineer with 5 years of experience in Python, JavaScript, React, and AWS.
     Experienced in Docker, Kubernetes, and cloud architecture.

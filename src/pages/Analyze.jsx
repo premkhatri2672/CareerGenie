@@ -4,8 +4,8 @@ import toast from 'react-hot-toast';
 import analyzeIcon from "../assets/analyze.png"
 import genie2 from "../assets/genie2.png"
 import { performAnalysis } from '../utils/ai.js'
-import "./Dashboard.css" // Base premium styling
-import "./Analyze.css" // Specific overrides
+import "./Dashboard.css" 
+import "./Analyze.css" 
 
 const ROLES = [
   "Frontend Developer", "Backend Developer", "Fullstack Developer", 
@@ -74,7 +74,7 @@ const Analyze = () => {
     const lastPart = parts[parts.length - 1].trim();
     
     if (lastPart) {
-      // Filter out already selected skills
+      
       const filtered = SKILLS.filter(s => 
         s.toLowerCase().includes(lastPart.toLowerCase()) && 
         !parts.some(p => p.trim().toLowerCase() === s.toLowerCase())
@@ -88,7 +88,7 @@ const Analyze = () => {
 
   const selectSkill = (s) => {
     const parts = skillsInput.split(',');
-    parts.pop(); // Remove the partial typed skill
+    parts.pop(); 
     const newVal = [...parts.map(p => p.trim()), s].filter(Boolean).join(', ') + ', ';
     setSkillsInput(newVal);
     setShowSkillSuggestions(false);
@@ -109,7 +109,7 @@ const Analyze = () => {
     });
 
     try {
-      // Convert skillsInput string like "HTML, CSS, JS" to array
+      
       const userSkillsList = skillsInput
         .split(',')
         .map(s => s.trim())
@@ -158,7 +158,7 @@ const Analyze = () => {
 
   return (
     <div className='dashboard'>
-      {/* ─── HEADER ─── */}
+      {}
       <div className="dash-header">
         <div className="dash-header-left">
           <div className="greeting-text">
@@ -178,7 +178,7 @@ const Analyze = () => {
 
       <div className="dash-content">
         <div className="dash-grid-2">
-          {/* ─── FORM SECTION ─── */}
+          {}
           <div className={`glass-card form-card ${animateIn ? 'animate-in' : ''}`} style={{ '--delay': '0s' }}>
             <div className="card-header">
               <h3>🎯 Target Profile Details</h3>
@@ -255,7 +255,7 @@ const Analyze = () => {
             </button>
           </div>
 
-          {/* ─── ILLUSTRATION / INSTRUCTIONS ─── */}
+          {}
           <div className={`glass-card center-content promo-card ${animateIn ? 'animate-in' : ''}`} style={{ '--delay': '0.1s' }}>
             <img src={genie2} alt="Career Genie" className="floating-mascot" />
             <h3>Let AI Guide Your Career</h3>
@@ -265,7 +265,7 @@ const Analyze = () => {
           </div>
         </div>
 
-        {/* ─── RESULT MODAL ─── */}
+        {}
         {result && (
           <div className="result-modal-overlay">
             <div className="result-modal-content glass-card slide-up">

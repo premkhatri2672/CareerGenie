@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getUserAnalyses } from '../utils/ai.js'
 import planIcon from "../assets/plan.png"
-import "./Dashboard.css" // Base premium styling
-import "./Roadmap.css" // Specific overrides
+import "./Dashboard.css" 
+import "./Roadmap.css" 
 
-// Pre-defined technology roadmaps for common roles (structured sequences)
+
 const TECH_ROADMAPS = {
   frontend: {
     beginner: [
@@ -86,7 +86,7 @@ const TECH_ROADMAPS = {
   }
 }
 
-// Default roadmap when no role-specific one exists
+
 const DEFAULT_ROADMAP = {
   beginner: [
     { tech: 'Fundamentals', desc: 'Learn programming basics - syntax, data structures, algorithms', weeks: '4 weeks' },
@@ -108,7 +108,7 @@ const DEFAULT_ROADMAP = {
   ]
 }
 
-// Default courses for each tech (YouTube search queries)
+
 const TECH_COURSES = {
   frontend: {
     beginner: {
@@ -189,8 +189,8 @@ const TECH_COURSES = {
   }
 }
 
-// Curated, beginner-friendly “recommended” videos for quick selection.
-// If something is missing, we fall back to TECH_COURSES.
+
+
 const RECOMMENDED_VIDEOS = {
   frontend: {
     beginner: {
@@ -301,7 +301,7 @@ const Roadmap = () => {
     latestScore = latestAnalysis.score || 0
   }
 
-  // Parse missing skills from analysis to dynamically update the roadmap status
+  
   const safeParse = (v) => {
     if (Array.isArray(v)) return v
     if (typeof v === 'string') {
@@ -320,36 +320,36 @@ const Roadmap = () => {
     })
   }
 
-  // Detect role category from role name
+  
   const detectRoleCategory = (role) => {
     const r = (role || '').toLowerCase()
     if (r.includes('front') || r.includes('react') || r.includes('web') || r.includes('ui')) return 'frontend'
     if (r.includes('back') || r.includes('node') || r.includes('server') || r.includes('api')) return 'backend'
     if (r.includes('data') || r.includes('ml') || r.includes('ai') || r.includes('science')) return 'datascience'
-    return 'fullstack' // Fallback to fullstack instead of null so all roles map to a rich trajectory
+    return 'fullstack' 
   }
 
   const roleCategory = latestRole ? detectRoleCategory(latestRole) : 'fullstack'
 
-  const [levelMode, setLevelMode] = useState('auto') // auto | beginner | intermediate | expert
+  const [levelMode, setLevelMode] = useState('auto') 
 
-  // Determine user's actual level based on score
+  
   const getUserLevel = () => {
     if (latestScore < 55) return 'beginner'
     if (latestScore < 75) return 'intermediate'
     return 'expert'
   }
 
-  // Get the structured roadmap for display
+  
   const getStructuredRoadmap = () => {
     const userLevel = getUserLevel()
 
-    // If role matches a known category, use structured roadmap
+    
     if (roleCategory && TECH_ROADMAPS[roleCategory]) {
       const roadmapData = TECH_ROADMAPS[roleCategory]
 
       if (levelMode === 'auto') {
-        // Show all levels with current level highlighted
+        
         return {
           beginner: roadmapData.beginner,
           intermediate: roadmapData.intermediate,
@@ -358,13 +358,13 @@ const Roadmap = () => {
         }
       }
 
-      // Show selected level only
+      
       if (levelMode === 'beginner') return { [levelMode]: roadmapData.beginner, currentLevel: 'beginner' }
       if (levelMode === 'intermediate') return { [levelMode]: roadmapData.intermediate, currentLevel: 'intermediate' }
       if (levelMode === 'expert') return { [levelMode]: roadmapData.expert, currentLevel: 'expert' }
     }
 
-    // Fallback to default roadmap
+    
     const defaultData = DEFAULT_ROADMAP
     if (levelMode === 'auto') {
       return {
@@ -381,7 +381,7 @@ const Roadmap = () => {
   const roadmapData = getStructuredRoadmap()
   const totalTechs = (roadmapData.beginner?.length || 0) + (roadmapData.intermediate?.length || 0) + (roadmapData.expert?.length || 0)
 
-  // Mastered skills: technologies in the roadmap that are not missing
+  
   const masteredSkills = latestAnalysis
     ? [
         ...(TECH_ROADMAPS[roleCategory]?.beginner || []),
@@ -401,7 +401,7 @@ const Roadmap = () => {
   }
   const remainingTechs = latestAnalysis ? getRemainingCount() : totalTechs
 
-  // Get courses for a specific tech
+  
   const getTechCourses = (tech) => {
     if (!roleCategory || !TECH_COURSES[roleCategory]) {
       return []
@@ -529,7 +529,7 @@ const Roadmap = () => {
 
   return (
     <div className='dashboard'>
-      {/* ─── HEADER ─── */}
+      {}
       <div className="dash-header">
         <div className="dash-header-left">
           <div className="greeting-text">
@@ -552,7 +552,7 @@ const Roadmap = () => {
       </div>
 
       <div className="dash-content">
-        {/* ─── STATS ─── */}
+        {}
         <div className="stats-grid-4">
           <div className={`metric-card ${animateIn ? 'animate-in' : ''}`} style={{ '--delay': '0s' }}>
             <div className="metric-icon-wrap" style={{ background: 'linear-gradient(135deg, #10b981, #34d399)' }}>🗺️</div>
@@ -577,7 +577,7 @@ const Roadmap = () => {
           </div>
         </div>
 
-        {/* ─── KEY STRENGTHS (MASTERED SKILLS) ─── */}
+        {}
         {latestAnalysis && masteredSkills.length > 0 && (
           <div className={`glass-card ${animateIn ? 'animate-in' : ''}`} style={{ marginTop: '2rem', '--delay': '0.3s' }}>
             <h3 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.25rem' }}>
@@ -611,7 +611,7 @@ const Roadmap = () => {
           </div>
         )}
 
-        {/* ─── LEVEL FILTER ─── */}
+        {}
         <div className='glass-card' style={{ marginTop: '2rem' }}>
           <div className="card-header" style={{ marginBottom: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
@@ -662,7 +662,7 @@ const Roadmap = () => {
             </div>
           )}
 
-          {/* ─── TECH ROADMAP GRID ─── */}
+          {}
           {(levelMode === 'auto' || levelMode === 'beginner') && roadmapData.beginner && (
             <RenderTechBlock items={roadmapData.beginner} color="#10b981" levelKey="beginner" />
           )}

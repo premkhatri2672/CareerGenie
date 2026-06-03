@@ -1,5 +1,5 @@
--- Run in Supabase SQL Editor (dashboard.supabase.co/project/wgrwtqkqgydphqvrdayn/sql)
--- Enable Row Level Security (RLS) after
+
+
 
 CREATE TABLE profiles (
   id uuid REFERENCES auth.users ON DELETE CASCADE PRIMARY KEY,
@@ -9,13 +9,13 @@ CREATE TABLE profiles (
   updated_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
--- Enable RLS
+
 ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Users can view own profile" ON profiles
   FOR ALL USING (auth.uid() = id);
 
--- Trigger to create profile on signup
+
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS trigger AS $$
 BEGIN
@@ -29,26 +29,26 @@ CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
   FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
 
--- Test users (or signup)
+
 INSERT INTO auth.users (id, email, encrypted_password, email_confirmed_at) VALUES 
 (uuid_generate_v4(), 'test@example.com', crypt('password', gen_salt('bf')), now());
 
--- Analyses table
+
 CREATE TABLE analyses (
   id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
   user_id uuid REFERENCES profiles(id) ON DELETE CASCADE,
   title text NOT NULL,
-  skills jsonb NOT NULL,  -- [{"skill": "JS", "score": 92}, ...]
-  target_skills jsonb,    -- [{"skill": "JS", "target": 95}, ...]
+  skills jsonb NOT NULL,  
+  target_skills jsonb,    
   avg_score numeric(5,2),
   role_transition text,
-  roadmap_levels text,         -- Level-specific roadmap stored as JSON string
-  courses_levels text,         -- Level-specific courses stored as JSON string
+  roadmap_levels text,         
+  courses_levels text,         
   created_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
   status text DEFAULT 'completed'
 );
 
--- Enable RLS
+
 ALTER TABLE analyses ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Users can view own analyses" ON analyses

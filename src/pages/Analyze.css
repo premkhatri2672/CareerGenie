@@ -1,6 +1,6 @@
-/* Analyze.css – extends Dashboard.css */
 
-/* Tag-based skill chips */
+
+
 .skills-chip-container {
   display: flex;
   flex-wrap: wrap;
@@ -57,7 +57,7 @@
   color: #f87171;
 }
 
-/* Analyze loading steps */
+
 .analyze-steps {
   display: flex;
   flex-direction: column;

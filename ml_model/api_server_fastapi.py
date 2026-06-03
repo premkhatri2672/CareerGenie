@@ -253,7 +253,7 @@ def youtube_courses_for_skill(skill: str = "", limit: int = 4):
                 continue
 
         if not courses:
-            # generic fallback
+            
             for _ in range(min(limit, 3)):
                 courses.append(
                     {
@@ -278,7 +278,7 @@ def insert_analysis(req: Request):
     try:
         os.makedirs("storage", exist_ok=True)
         payload = req.json()
-        # Request.json() is async in FastAPI; but for simplicity we access sync via await
+        
     except Exception:
         pass
     return {"error": "Not implemented"}

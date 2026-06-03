@@ -11,39 +11,39 @@ def create_docx_resume(filename, resume_data):
     """Create a DOCX resume"""
     doc = Document()
 
-    # Add title
+    
     title = doc.add_heading(resume_data['name'], level=0)
-    title.alignment = 1  # Center
+    title.alignment = 1  
 
-    # Add contact info
+    
     contact = doc.add_paragraph()
     contact.alignment = 1
     contact.add_run(f"{resume_data['email']} | {resume_data['phone']}").font.size = Pt(10)
 
-    # Summary
+    
     doc.add_heading('Professional Summary', level=2)
     doc.add_paragraph(resume_data['summary'])
 
-    # Skills
+    
     doc.add_heading('Technical Skills', level=2)
     skills_text = ", ".join(resume_data['skills'])
     doc.add_paragraph(skills_text)
 
-    # Experience
+    
     doc.add_heading('Work Experience', level=2)
     for exp in resume_data['experience']:
         p = doc.add_paragraph(style='List Bullet')
         p.add_run(f"{exp['role']} at {exp['company']}").bold = True
         doc.add_paragraph(f"{exp['duration']}", style='List Bullet 2')
 
-    # Projects
+    
     doc.add_heading('Projects', level=2)
     for proj in resume_data['projects']:
         p = doc.add_paragraph(style='List Bullet')
         p.add_run(proj['name']).bold = True
         doc.add_paragraph(f"Technologies: {proj['tech']}", style='List Bullet 2')
 
-    # Education
+    
     doc.add_heading('Education', level=2)
     doc.add_paragraph(f"{resume_data['education']['degree']}")
     doc.add_paragraph(f"{resume_data['education']['school']}, {resume_data['education']['year']}")
@@ -57,7 +57,7 @@ def create_pdf_resume(filename, resume_data):
     story = []
     styles = getSampleStyleSheet()
 
-    # Title
+    
     title_style = ParagraphStyle(
         'CustomTitle',
         parent=styles['Heading1'],
@@ -68,7 +68,7 @@ def create_pdf_resume(filename, resume_data):
     )
     story.append(Paragraph(resume_data['name'], title_style))
 
-    # Contact
+    
     contact_style = ParagraphStyle(
         'Contact',
         parent=styles['Normal'],
@@ -78,31 +78,31 @@ def create_pdf_resume(filename, resume_data):
     story.append(Paragraph(f"{resume_data['email']} | {resume_data['phone']}", contact_style))
     story.append(Spacer(1, 0.2*inch))
 
-    # Summary
+    
     story.append(Paragraph('<b>Professional Summary</b>', styles['Heading2']))
     story.append(Paragraph(resume_data['summary'], styles['Normal']))
     story.append(Spacer(1, 0.1*inch))
 
-    # Skills
+    
     story.append(Paragraph('<b>Technical Skills</b>', styles['Heading2']))
     story.append(Paragraph(", ".join(resume_data['skills']), styles['Normal']))
     story.append(Spacer(1, 0.1*inch))
 
-    # Experience
+    
     story.append(Paragraph('<b>Work Experience</b>', styles['Heading2']))
     for exp in resume_data['experience']:
         story.append(Paragraph(f"<b>{exp['role']}</b> at {exp['company']}", styles['Normal']))
         story.append(Paragraph(exp['duration'], styles['Normal']))
     story.append(Spacer(1, 0.1*inch))
 
-    # Projects
+    
     story.append(Paragraph('<b>Projects</b>', styles['Heading2']))
     for proj in resume_data['projects']:
         story.append(Paragraph(f"<b>{proj['name']}</b>", styles['Normal']))
         story.append(Paragraph(f"Tech: {proj['tech']}", styles['Normal']))
     story.append(Spacer(1, 0.1*inch))
 
-    # Education
+    
     story.append(Paragraph('<b>Education</b>', styles['Heading2']))
     story.append(Paragraph(resume_data['education']['degree'], styles['Normal']))
     story.append(Paragraph(f"{resume_data['education']['school']}, {resume_data['education']['year']}", styles['Normal']))
@@ -110,7 +110,7 @@ def create_pdf_resume(filename, resume_data):
     doc.build(story)
     print(f"[OK] Created: {filename}")
 
-# Sample resumes
+
 resumes = [
     {
         'name': 'Alice Johnson',
@@ -242,11 +242,11 @@ if __name__ == '__main__':
     print("Generating sample resumes...\n")
 
     for i, resume in enumerate(resumes, 1):
-        # Create DOCX
+        
         docx_name = f"sample_resume_{i}.docx"
         create_docx_resume(docx_name, resume)
 
-        # Create PDF
+        
         pdf_name = f"sample_resume_{i}.pdf"
         create_pdf_resume(pdf_name, resume)
 

@@ -68,7 +68,7 @@ Respond JSON:
 
   let rawContent = response.choices[0].message.content;
   
-  // Strip markdown wraps if OpenAI returns them anyway
+  
   if (rawContent.includes('```json')) {
     rawContent = rawContent.split('```json')[1].split('```')[0].trim();
   } else if (rawContent.includes('```')) {

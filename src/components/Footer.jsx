@@ -67,13 +67,13 @@ const Footer = () => {
 
   return (
     <footer ref={footerRef} className="footer">
-      {/* Gradient top border */}
+      {}
       <div className="footer-top-border" />
 
       <div className="footer-inner">
-        {/* ─── TOP ────────────────────────── */}
+        {}
         <div className="footer-top">
-          {/* Brand */}
+          {}
           <motion.div
             className="footer-brand"
             initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Links */}
+          {}
           <div className="footer-links">
             <motion.div
               className="footer-col"
@@ -150,7 +150,7 @@ const Footer = () => {
               <a href="/#">Contact Us</a>
             </motion.div>
 
-            {/* Newsletter */}
+            {}
             <motion.div
               className="footer-col footer-newsletter"
               initial={{ opacity: 0, y: 20 }}
@@ -172,7 +172,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ─── BOTTOM ─────────────────────── */}
+        {}
         <div className="footer-bottom">
           <p>© 2026 CareerGenie. All rights reserved. Made with ❤️ for career success</p>
           <div className="footer-bottom-links">

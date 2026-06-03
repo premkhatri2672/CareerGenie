@@ -1,4 +1,4 @@
-/* ─── APP SHELL ─────────────────────────────────────────── */
+
 .app-shell {
   display: flex;
   min-height: 100vh;
@@ -12,7 +12,7 @@
   flex-direction: column;
 }
 
-/* ─── TOPBAR ────────────────────────────────────────────── */
+
 .app-topbar {
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@
   color: white;
 }
 
-/* ─── DASHBOARD PAGE ────────────────────────────────────── */
+
 .dashboard {
   flex: 1;
   padding: 2rem;
@@ -57,7 +57,7 @@
   gap: 1.5rem;
 }
 
-/* ─── HEADER ────────────────────────────────────────────── */
+
 .dash-header {
   display: flex;
   align-items: center;
@@ -134,7 +134,7 @@
   color: var(--text-secondary);
 }
 
-/* ─── GRADIENT TEXT ─────────────────────────────────────── */
+
 .gradient-text {
   background: var(--gradient-text);
   -webkit-background-clip: text;
@@ -142,14 +142,14 @@
   background-clip: text;
 }
 
-/* ─── CONTENT AREA ──────────────────────────────────────── */
+
 .dash-content {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* ─── GRID LAYOUTS ──────────────────────────────────────── */
+
 .dash-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -162,7 +162,7 @@
   gap: 1.5rem;
 }
 
-/* ─── GLASS CARD (override) ─────────────────────────────── */
+
 .glass-card {
   background: rgba(13, 17, 38, 0.55);
   border: 1px solid rgba(139, 92, 246, 0.12);
@@ -178,7 +178,7 @@
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(139, 92, 246, 0.08);
 }
 
-/* ─── CARD HEADER ───────────────────────────────────────── */
+
 .card-header {
   display: flex;
   align-items: center;
@@ -207,7 +207,7 @@
   color: #c4b5fd;
 }
 
-/* ─── METRIC CARDS ──────────────────────────────────────── */
+
 .stats-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -275,14 +275,14 @@
   letter-spacing: 0.06em;
 }
 
-/* ─── STATS GRID 4 ──────────────────────────────────────── */
+
 .stats-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
-/* ─── SCORE BADGE ───────────────────────────────────────── */
+
 .score-badge {
   display: inline-flex;
   align-items: center;
@@ -311,7 +311,7 @@
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-/* ─── SKILLS ────────────────────────────────────────────── */
+
 .skills-insights-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -373,7 +373,7 @@
   font-style: italic;
 }
 
-/* ─── QUICK ACTIONS ─────────────────────────────────────── */
+
 .quick-actions-section h3 {
   font-size: 1rem;
   font-weight: 700;
@@ -416,7 +416,7 @@
   font-size: 1.5rem;
 }
 
-/* ─── RECENT LIST ───────────────────────────────────────── */
+
 .recent-list {
   display: flex;
   flex-direction: column;
@@ -461,7 +461,7 @@
   font-weight: 700;
 }
 
-/* ─── LATEST ANALYSIS CARD ──────────────────────────────── */
+
 .latest-analysis-card h3 {
   font-size: 1rem;
   font-weight: 700;
@@ -481,7 +481,7 @@
   color: var(--text-muted);
 }
 
-/* ─── BUTTONS ───────────────────────────────────────────── */
+
 .action-btn-primary {
   display: inline-flex;
   align-items: center;
@@ -526,7 +526,7 @@
   color: white;
 }
 
-/* ─── EMPTY STATE ───────────────────────────────────────── */
+
 .empty-state-card {
   background: rgba(13, 17, 38, 0.55);
   border: 1px dashed rgba(139, 92, 246, 0.2);
@@ -565,7 +565,7 @@
   margin-top: 0.5rem;
 }
 
-/* ─── LOADER ────────────────────────────────────────────── */
+
 .dashboard-loader {
   flex: 1;
   display: flex;
@@ -578,14 +578,14 @@
   font-size: 0.9rem;
 }
 
-/* ─── PROFILE PAGE ──────────────────────────────────────── */
+
 .dash-grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
 
-/* ─── FORM ELEMENTS ─────────────────────────────────────── */
+
 .input-group {
   display: flex;
   flex-direction: column;
@@ -600,7 +600,7 @@
   letter-spacing: 0.02em;
 }
 
-/* ─── SUGGESTIONS DROPDOWN ──────────────────────────────── */
+
 .suggestions-dropdown {
   position: absolute;
   top: calc(100% + 4px);
@@ -633,7 +633,7 @@
   color: white;
 }
 
-/* ─── RESULT MODAL ──────────────────────────────────────── */
+
 .result-modal-overlay {
   position: fixed;
   inset: 0;
@@ -755,7 +755,7 @@
   margin-top: 1px;
 }
 
-/* ─── PROFILE PAGE EXTRAS ───────────────────────────────── */
+
 .profile-main-card {
   padding: 2rem;
 }
@@ -860,7 +860,7 @@
   transform: translateY(-1px);
 }
 
-/* ─── LOADING / UPLOAD UTILS ────────────────────────────── */
+
 .file-upload-wrapper {
   position: relative;
 }
@@ -893,7 +893,7 @@
   font-size: 1.2rem;
 }
 
-/* Analyze specific */
+
 .form-card {
   opacity: 0;
   transform: translateY(20px);
@@ -942,7 +942,7 @@
   font-size: 0.95rem !important;
 }
 
-/* Dismiss btn */
+
 .dismiss-btn {
   width: 100%;
   justify-content: center;
@@ -951,7 +951,7 @@
   border: none !important;
 }
 
-/* ─── RESPONSIVE ────────────────────────────────────────── */
+
 @media (max-width: 1024px) {
   .stats-grid-4 {
     grid-template-columns: repeat(2, 1fr);

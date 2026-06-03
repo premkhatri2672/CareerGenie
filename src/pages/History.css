@@ -1,4 +1,4 @@
-/* History.css – extends Dashboard.css */
+
 
 .history-filters {
   display: flex;
@@ -42,7 +42,7 @@
   color: white;
 }
 
-/* Timeline list */
+
 .history-timeline {
   display: flex;
   flex-direction: column;
@@ -111,7 +111,7 @@
   flex-shrink: 0;
 }
 
-/* Expanded row */
+
 .history-expanded {
   padding: 1rem 1.25rem 1.25rem;
   background: rgba(139, 92, 246, 0.04);

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { getUserAnalyses } from '../utils/ai.js'
 import historyIcon from "../assets/history.png"
-import "./Dashboard.css" // Base premium styling
-import "./History.css" // Specific overrides
+import "./Dashboard.css" 
+import "./History.css" 
 
 const History = () => {
   const [analyses, setAnalyses] = useState([])
@@ -17,7 +17,7 @@ const History = () => {
         if (data && data.length > 0) {
           setAnalyses(data)
         } else {
-          // Fallback mock data if no real data exists yet
+          
           setAnalyses([
             { id: 1, role_transition: "Frontend Developer", score: 85, created_at: new Date(Date.now() - 3*86400000).toISOString(), status: "completed" },
             { id: 2, role_transition: "Fullstack Developer", score: 72, created_at: new Date(Date.now() - 7*86400000).toISOString(), status: "completed" },
@@ -78,7 +78,7 @@ const History = () => {
 
   return (
     <div className='dashboard'>
-      {/* ─── HEADER ─── */}
+      {}
       <div className="dash-header">
         <div className="dash-header-left">
           <div className="greeting-text">
@@ -97,7 +97,7 @@ const History = () => {
       </div>
 
       <div className="dash-content">
-        {/* ─── STATS ─── */}
+        {}
         <div className="stats-grid-4">
           <div className={`metric-card ${animateIn ? 'animate-in' : ''}`} style={{ '--delay': '0s' }}>
             <div className="metric-icon-wrap" style={{ background: 'linear-gradient(135deg, #10b981, #34d399)' }}>📊</div>
@@ -122,7 +122,7 @@ const History = () => {
           </div>
         </div>
 
-        {/* ─── HISTORY LIST ─── */}
+        {}
         <div className='glass-card' style={{ marginTop: '1.5rem', animation: 'slideInUp 0.5s ease both', animationDelay: '0.3s' }}>
           <div className="card-header">
             <h3>📋 Complete History</h3>
@@ -165,7 +165,7 @@ const History = () => {
         </div>
       </div>
 
-      {/* ─── RESULT DETAIL MODAL ─── */}
+      {}
       {selectedAnalysis && (
         <div className="result-modal-overlay" style={{
           position: 'fixed',
@@ -246,7 +246,7 @@ const History = () => {
             </div>
 
             <div className="dash-grid-3" style={{ marginBottom: '2rem', gap: '1.25rem' }}>
-              {/* Missing Skills */}
+              {}
               <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '1.25rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.04)' }}>
                 <h4 style={{ color: '#fbbf24', fontSize: '0.95rem', marginTop: 0, marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   ⚠️ Skill Gaps (Focus Areas)
@@ -274,7 +274,7 @@ const History = () => {
                 )}
               </div>
 
-              {/* Steps */}
+              {}
               <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '1.25rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.04)' }}>
                 <h4 style={{ color: '#818cf8', fontSize: '0.95rem', marginTop: 0, marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   🗺️ Timeline Roadmap
@@ -310,7 +310,7 @@ const History = () => {
                 )}
               </div>
 
-              {/* Courses */}
+              {}
               <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '1.25rem', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.04)' }}>
                 <h4 style={{ color: '#ef4444', fontSize: '0.95rem', marginTop: 0, marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   🎥 Free YouTube Courses
@@ -318,27 +318,27 @@ const History = () => {
                 {selectedCourses.length > 0 ? (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     {selectedCourses.map((course, index) => {
-                      // Handle new format: "YouTube: Title (url)" or old format: "YouTube: Title by Channel"
+                      
                       let displayTitle = course;
                       let youtubeUrl = '';
 
-                      // Check for new format with URL in parentheses
+                      
                       const urlMatch = course.match(/YouTube: (.+?) \((https?:\/\/[^\)]+)\)/);
                       if (urlMatch) {
                         displayTitle = urlMatch[1].trim();
                         youtubeUrl = urlMatch[2];
                       } else if (course.includes('YouTube:')) {
-                        // Old format - extract skill and do search
+                        
                         const skillMatch = course.match(/YouTube: (.+?) by/);
                         const skillName = skillMatch ? skillMatch[1] : course.replace('YouTube: ', '');
                         displayTitle = `YouTube: ${skillName}`;
                         youtubeUrl = `https://www.youtube.com/search?q=${encodeURIComponent(skillName)}+tutorial`;
                       } else if (course.includes('watch?v=') || course.includes('youtu.be')) {
-                        // Direct YouTube URL
+                        
                         youtubeUrl = course.startsWith('http') ? course : `https://www.youtube.com/${course}`;
                         displayTitle = 'YouTube Video';
                       } else {
-                        // Fallback - use search
+                        
                         youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(course)}+tutorial`;
                       }
                       return (

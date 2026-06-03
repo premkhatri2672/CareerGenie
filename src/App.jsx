@@ -21,7 +21,7 @@ import Signup from "./pages/Signup"
 import ProtectedRoute from "./components/ProtectedRoute"
 import { useSidebar } from './contexts/SidebarContext.js'
 
-// ─── DRY Dashboard Layout ────────────────────────────────
+
 const DashboardLayout = ({ children }) => {
   const { isSidebarOpen, sidebarWidth, toggleSidebar } = useSidebar()
 
@@ -32,7 +32,7 @@ const DashboardLayout = ({ children }) => {
         className="app-main"
         style={{ marginLeft: `${isSidebarOpen ? sidebarWidth || 260 : 0}px`, transition: 'margin-left 0.32s cubic-bezier(0.4, 0, 0.2, 1)' }}
       >
-        {/* Top toggle bar */}
+        {}
         <div className="app-topbar">
           <button className="sidebar-toggle-btn" onClick={toggleSidebar} aria-label="Toggle sidebar">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
@@ -67,7 +67,7 @@ const App = () => {
 
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          {/* ── HOME ──────────────────────── */}
+          {}
           <Route path="/" element={
             <motion.div {...pageTransition}>
               <HomeVideoLayout>
@@ -78,11 +78,11 @@ const App = () => {
             </motion.div>
           } />
 
-          {/* ── AUTH ──────────────────────── */}
+          {}
           <Route path="/login"  element={<Login />} />
           <Route path="/signup" element={<Signup />} />
 
-          {/* ── PROTECTED DASHBOARD ───────── */}
+          {}
           <Route path="/dashboard" element={
             <ProtectedRoute>
               <DashboardLayout><Dashboard /></DashboardLayout>

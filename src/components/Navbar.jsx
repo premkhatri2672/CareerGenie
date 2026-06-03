@@ -62,7 +62,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close dropdown on outside click
+  
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -89,12 +89,12 @@ const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
-        {/* Logo */}
+        {}
         <Link to="/" className="navbar-logo">
           <img src={logo} alt="CareerGenie" />
         </Link>
 
-        {/* Desktop Nav Links */}
+        {}
         <div className="navbar-links">
           {navLinks.map((link) => (
             <NavLink
@@ -111,9 +111,9 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Right Actions */}
+        {}
         <div className="navbar-actions">
-          {/* Profile Dropdown */}
+          {}
           <div className="navbar-profile" ref={dropdownRef} onClick={() => setDropdownOpen(!dropdownOpen)}>
             <div className="profile-avatar-btn">
               <img src={profileImg} alt="profile" />
@@ -167,7 +167,7 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          {/* Mobile Hamburger */}
+          {}
           <button
             className="navbar-hamburger"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -178,7 +178,7 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div

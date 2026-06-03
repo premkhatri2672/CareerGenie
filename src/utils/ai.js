@@ -3,7 +3,7 @@ import { parseResume } from '../lib/pdf.js'
 import { getSession } from './auth.js'
 import { supabase } from '../lib/supabase.js'
 
-// ─── COMPREHENSIVE ROLE KNOWLEDGE BASE ──────────────────────────────────────
+
 const ROLE_KNOWLEDGE_BASE = {
   frontend: {
     title: 'Frontend Developer',
@@ -97,7 +97,7 @@ const ROLE_KNOWLEDGE_BASE = {
   }
 }
 
-// ─── SKILL LEARNING TIME (weeks) ─────────────────────────────────────────────
+
 const SKILL_LEARNING_TIME = {
   'React': 6, 'JavaScript': 10, 'TypeScript': 4, 'HTML': 3, 'CSS': 3,
   'Next.js': 3, 'TailwindCSS': 2, 'Redux': 3, 'Webpack': 2, 'Jest': 3,
@@ -113,8 +113,8 @@ const SKILL_LEARNING_TIME = {
   'Firebase': 2, 'Supabase': 2, 'Spark': 6, 'R': 6, 'Tableau': 3,
 }
 
-// ─── CURATED SKILL COURSES DB ─────────────────────────────────────────────────
-// Each skill maps to 2-3 real, verified courses with actual links
+
+
 const SKILL_COURSES_DB = {
   'React': [
     { title: 'React - The Complete Guide 2024', platform: 'Udemy', url: 'https://www.udemy.com/course/react-the-complete-guide-incl-redux/', thumbnail: 'https://img-c.udemycdn.com/course/240x135/1362070_b9a1_2.jpg', duration: '68h', instructor: 'Maximilian Schwarzmüller', rating: 4.8 },
@@ -231,13 +231,13 @@ const SKILL_COURSES_DB = {
   ],
 }
 
-// Fallback for skills not in the DB
+
 const getFallbackCourse = (skill) => [
   { title: `${skill} - Complete Beginner to Advanced`, platform: 'Udemy', url: `https://www.udemy.com/courses/search/?q=${encodeURIComponent(skill)}`, thumbnail: 'https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg', duration: '10-20h', instructor: 'Various Experts', rating: 4.5 },
   { title: `${skill} Full Course for Beginners`, platform: 'YouTube', url: `https://www.youtube.com/results?search_query=${encodeURIComponent(skill + ' full course freecodecamp')}`, thumbnail: 'https://www.youtube.com/favicon.ico', duration: '3-8h', instructor: 'freeCodeCamp', rating: 4.6 },
 ]
 
-// ─── ROLE RESOLVER ───────────────────────────────────────────────────────────
+
 const resolveRole = (targetRole) => {
   const r = (targetRole || '').toLowerCase()
   if (r.includes('full') && (r.includes('stack') || r.includes('web'))) return 'fullstack'
@@ -249,16 +249,16 @@ const resolveRole = (targetRole) => {
   if (r.includes('mobil') || r.includes('ios') || r.includes('android') || r.includes('flutter')) return 'mobile'
   if (r.includes('qa') || r.includes('test') || r.includes('automation') || r.includes('quality')) return 'qa'
   if (r.includes('cyber') || r.includes('security') || r.includes('pentest')) return 'cybersecurity'
-  return 'fullstack' // best generic fallback
+  return 'fullstack' 
 }
 
-// ─── RICH ANALYSIS GENERATOR ─────────────────────────────────────────────────
+
 const generateRichAnalysis = (targetRole, resumeText = '', userProvidedSkills = []) => {
   const roleKey = resolveRole(targetRole)
   const roleData = ROLE_KNOWLEDGE_BASE[roleKey]
   const requiredSkills = roleData.requiredSkills
 
-  // Normalize user skills
+  
   const allKnownSkills = Object.keys(SKILL_COURSES_DB)
   let userSkills = []
 
@@ -275,12 +275,12 @@ const generateRichAnalysis = (targetRole, resumeText = '', userProvidedSkills = 
     })
   }
 
-  // Missing skills
+  
   const missingSkills = requiredSkills.filter(
     skill => !userSkills.some(us => us.toLowerCase() === skill.toLowerCase())
   )
 
-  // Score
+  
   const matchCount = userSkills.length
   const totalCount = requiredSkills.length
   const hasAll = missingSkills.length === 0 && totalCount > 2
@@ -292,34 +292,34 @@ const generateRichAnalysis = (targetRole, resumeText = '', userProvidedSkills = 
     score = Math.max(42, Math.min(84, base))
   }
 
-  // Level
+  
   const level = score >= 80 ? 'Senior' : score >= 60 ? 'Mid-level' : 'Junior'
 
-  // Salary
+  
   const salaryLevel = score >= 80 ? 'senior' : score >= 60 ? 'mid' : 'junior'
   const salary = roleData.salary[salaryLevel]
 
-  // Course recommendations — for top missing skills
+  
   const coursesForMissing = missingSkills.slice(0, 4).flatMap(skill => {
     const courses = SKILL_COURSES_DB[skill] || getFallbackCourse(skill)
     return courses.slice(0, 2).map(c => ({ ...c, forSkill: skill }))
   })
 
-  // Also add 1 course for a skill the user has (to go deeper)
+  
   const strengthCourses = userSkills.slice(0, 2).flatMap(skill => {
     const courses = SKILL_COURSES_DB[skill]
     if (!courses) return []
-    // Return the most advanced course (last one)
+    
     return [{ ...courses[courses.length - 1], forSkill: skill, isAdvanced: true }]
   })
 
-  // Learning time for missing skills
+  
   const missingWithTime = missingSkills.map(skill => ({
     skill,
     weeks: SKILL_LEARNING_TIME[skill] || 4
   }))
 
-  // Roadmap
+  
   const roadmapByLevel = {
     junior: [
       `🌱 Start with fundamentals: Master ${missingSkills.slice(0, 2).join(' & ')} first`,
@@ -352,7 +352,7 @@ const generateRichAnalysis = (targetRole, resumeText = '', userProvidedSkills = 
     : score < 78 ? roadmapByLevel.mid
     : roadmapByLevel.senior
 
-  // Stats insight
+  
   const insights = {
     marketDemand: roleData.marketDemand,
     demandTrend: roleData.demandTrend,
@@ -371,7 +371,7 @@ const generateRichAnalysis = (targetRole, resumeText = '', userProvidedSkills = 
     userSkills,
     roadmap,
     coursesData: [...coursesForMissing, ...strengthCourses],
-    // Keep backward-compat string format for old consumers
+    
     recommendedCourses: [...coursesForMissing, ...strengthCourses]
       .map(c => `${c.platform}: ${c.title} | ${c.url}`),
     insights,
@@ -393,7 +393,7 @@ const ROLE_SKILLS = {
 const analyzeWithMLBackend = async (resumeText, targetRole) => {
   const mlApiUrl = import.meta.env.VITE_ML_API_URL || 'http://127.0.0.1:5000'
   const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), 4000) // 4 second timeout limit
+  const timeoutId = setTimeout(() => controller.abort(), 4000) 
 
   try {
     const response = await fetch(`${mlApiUrl}/api/analyze`, {
@@ -441,13 +441,13 @@ export const performAnalysis = async (resumeFile, targetRole, userProvidedSkills
     let result
     let isOfflineMock = false
 
-    // 1) Try ML backend
+    
     try {
       const mlResult = await analyzeWithMLBackend(resumeText, targetRole)
       const missingSkillsArray = mlResult.missingSkills || []
       const roadmapArray = mlResult.roadmap || []
 
-      // Enrich with our rich course data
+      
       const enriched = generateRichAnalysis(targetRole, resumeText, userProvidedSkills)
       result = {
         score: mlResult.score,
@@ -470,7 +470,7 @@ export const performAnalysis = async (resumeFile, targetRole, userProvidedSkills
       result = generateRichAnalysis(targetRole, resumeText, extractedSkills)
     }
 
-    // Save to DB
+    
     const missingSkillsArray = result.missingSkills || []
     const roadmapArray = result.roadmap || []
     const finalCourses = Array.isArray(result.recommendedCourses) ? result.recommendedCourses : []
@@ -514,7 +514,7 @@ export const performAnalysis = async (resumeFile, targetRole, userProvidedSkills
     }
 
     try {
-      // Race Supabase insert against a 3-second timeout
+      
       const sbData = await Promise.race([
         runSupabaseInsert(),
         new Promise((_, reject) => setTimeout(() => reject(new Error('Supabase save timeout')), 3000))
@@ -562,7 +562,7 @@ export const performAnalysis = async (resumeFile, targetRole, userProvidedSkills
 
     return {
       ...data,
-      // Pass rich fields directly
+      
       coursesData: result.coursesData,
       missingWithTime: result.missingWithTime,
       salary: result.salary,
@@ -592,7 +592,7 @@ export const getUserAnalyses = async () => {
   )
 
   const fetchNetworkData = async () => {
-    // 1. Try Supabase
+    
     try {
       const session = await getSession()
       const userId = session?.user?.id
@@ -614,7 +614,7 @@ export const getUserAnalyses = async () => {
       console.warn('[ai.js] Supabase read failed:', e)
     }
 
-    // 2. Try Python API server
+    
     try {
       const session = await getSession()
       const userId = session?.user?.id || 'guest-user-id'
@@ -637,7 +637,7 @@ export const getUserAnalyses = async () => {
   }
 
   try {
-    // Race network calls against a 1.8-second timeout for snappy UI
+    
     const networkData = await Promise.race([
       fetchNetworkData(),
       timeoutPromise
@@ -652,5 +652,5 @@ export const getUserAnalyses = async () => {
   return localData
 }
 
-// Export the knowledge base for use in ResumeAnalyzer
+
 export { ROLE_KNOWLEDGE_BASE, SKILL_COURSES_DB, SKILL_LEARNING_TIME, resolveRole, generateRichAnalysis }

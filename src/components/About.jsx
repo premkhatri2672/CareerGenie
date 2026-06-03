@@ -89,11 +89,11 @@ const About = () => {
 
   return (
     <section id="about" className="about">
-      {/* Ambient background */}
+      {}
       <div className="about-orb about-orb-1" />
       <div className="about-orb about-orb-2" />
 
-      {/* ─── HOW IT WORKS ─────────────────── */}
+      {}
       <div className="about-section">
         <motion.div
           className="section-header"
@@ -130,7 +130,7 @@ const About = () => {
         </motion.div>
       </div>
 
-      {/* ─── STATS BAR ────────────────────── */}
+      {}
       <motion.div
         ref={statsRef}
         className="stats-bar"
@@ -146,7 +146,7 @@ const About = () => {
         ))}
       </motion.div>
 
-      {/* ─── FEATURES ─────────────────────── */}
+      {}
       <div className="about-section">
         <motion.div
           className="section-header"
@@ -179,7 +179,7 @@ const About = () => {
         </motion.div>
       </div>
 
-      {/* ─── MISSION ──────────────────────── */}
+      {}
       <motion.div
         className="mission-section"
         initial={{ opacity: 0, y: 32 }}

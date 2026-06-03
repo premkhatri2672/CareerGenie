@@ -14,7 +14,7 @@ export const SidebarProvider = ({ children }) => {
 const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [sidebarWidth, setSidebarWidth] = useState(260);
 
-  // Persistence
+  
   useEffect(() => {
     const saved = localStorage.getItem('careerGenieSidebarOpen');
     if (saved !== null) {
