@@ -1,0 +1,102 @@
+/* Analyze.css – extends Dashboard.css */
+
+/* Tag-based skill chips */
+.skills-chip-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  cursor: text;
+}
+
+.skills-chip-container:focus-within {
+  border-color: var(--violet);
+  background: rgba(139, 92, 246, 0.06);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.65rem;
+  background: rgba(139, 92, 246, 0.18);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #c4b5fd;
+  transition: all 0.15s ease;
+}
+
+.skill-chip-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 0.7rem;
+  line-height: 1;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.skill-chip-remove:hover {
+  background: rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
+/* Analyze loading steps */
+.analyze-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+
+.analyze-step {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.analyze-step.active {
+  color: white;
+}
+
+.analyze-step.done {
+  color: #34d399;
+}
+
+.analyze-step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.analyze-step.active .analyze-step-dot {
+  background: var(--violet);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+.analyze-step.done .analyze-step-dot {
+  background: #10b981;
+}

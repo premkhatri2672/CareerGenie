@@ -1,0 +1,343 @@
+/* Premium Roadmap Page - Specific Overrides */
+/* Base styling like .dashboard, .dash-header, .dash-content are in Dashboard.css */
+
+.roadmap-timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 1rem 0 1rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.roadmap-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 28px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.timeline-item {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+  padding-bottom: 3rem;
+  animation: slideInLeft 0.5s ease both;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  bottom: -14px;
+  left: 4.5px;
+  width: 2px;
+  background: linear-gradient(to bottom, #6c63ff, transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.timeline-item:last-child::after {
+  display: none;
+}
+
+.timeline-item.active ~ .timeline-item::after {
+  display: none;
+}
+
+.timeline-item:has(.completed)::after {
+  opacity: 1;
+  background: var(--mint-green);
+}
+
+.timeline-item.active::after {
+  opacity: 1;
+  background: linear-gradient(to bottom, #6c63ff, rgba(255, 255, 255, 0.06));
+}
+
+.timeline-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: all 0.3s ease;
+}
+
+.timeline-dot.completed {
+  background: var(--mint-green);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.45);
+}
+
+.timeline-dot.active {
+  background: #6c63ff;
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.55);
+}
+
+.dot-pulse {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  border: 2px solid #8f94fb;
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(129, 140, 248, 0.18);
+  padding: 1.35rem;
+  border-radius: 18px;
+  flex: 1;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(12px);
+}
+
+.timeline-item:hover .timeline-content {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(6px);
+  border-color: rgba(129, 140, 248, 0.35);
+  box-shadow: 0 14px 40px rgba(99, 102, 241, 0.12);
+}
+
+
+.timeline-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  color: white;
+  font-weight: 700;
+}
+
+.timeline-content p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.progress-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  margin-top: 1.25rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primary-gradient);
+  border-radius: 50px;
+  transition: width 1.5s ease-out;
+  box-shadow: 0 0 10px rgba(143, 148, 251, 0.5);
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .timeline-item {
+    gap: 1rem;
+  }
+}
+
+/* ─── TECH ROADMAP GRID ─── */
+.tech-roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.tech-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(129, 140, 248, 0.15);
+  border-radius: 16px;
+  padding: 1.25rem;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(12px);
+}
+
+.tech-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-4px);
+  border-color: rgba(129, 140, 248, 0.35);
+  box-shadow: 0 14px 40px rgba(99, 102, 241, 0.12);
+}
+
+.tech-card.current {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.tech-card.current:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 14px 40px rgba(16, 185, 129, 0.15);
+}
+
+.tech-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.tech-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6c63ff, #8f94fb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.tech-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  flex: 1;
+}
+
+.tech-weeks {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+}
+
+.tech-desc {
+  margin: 0 0 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.tech-videos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.videos-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.video-link {
+  font-size: 0.8rem;
+  color: #8f94fb;
+  text-decoration: none;
+  padding: 0.35rem 0.5rem;
+  background: rgba(99, 102, 241, 0.08);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.video-link:hover {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  transform: translateX(4px);
+}
+
+/* New: recommended video buttons */
+.tech-videos .recommended-video-btn,
+.tech-videos .recommended-video-btn:visited {
+  font-size: 0.8rem;
+  color: #a5b4fc;
+  text-decoration: none;
+  padding: 0.35rem 0.55rem;
+  background: rgba(99, 102, 241, 0.10);
+  border: 1px solid rgba(143, 148, 251, 0.25);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recommended-video-btn:hover {
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(143, 148, 251, 0.5);
+  transform: translateX(4px);
+}
+
+.recommended-video-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(143, 148, 251, 0.35);
+}
+
+.no-videos {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .tech-roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Status badge styles */
+.tech-status-badge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 20px;
+  font-weight: 600;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.badge-missing {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #f87171;
+}
+
+.badge-completed {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #34d399;
+}
+
+
