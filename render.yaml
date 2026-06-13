@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: careergenie-api
+    runtime: python
+    buildCommand: pip install -r ml_model/render_requirements.txt
+    startCommand: cd ml_model && gunicorn api_server:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+    plan: free
