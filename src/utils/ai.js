@@ -391,7 +391,7 @@ const ROLE_SKILLS = {
 }
 
 const analyzeWithMLBackend = async (resumeText, targetRole) => {
-  const mlApiUrl = import.meta.env.VITE_ML_API_URL || 'http://127.0.0.1:5000'
+  const mlApiUrl = import.meta.env.VITE_ML_API_URL || 'https://careergenie-lypu.onrender.com'
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), 4000) 
 
@@ -528,7 +528,7 @@ export const performAnalysis = async (resumeFile, targetRole, userProvidedSkills
     }
 
     if (!databaseSaved) {
-      const mlApiUrl = import.meta.env.VITE_ML_API_URL || 'http://127.0.0.1:5000'
+      const mlApiUrl = import.meta.env.VITE_ML_API_URL || 'https://careergenie-lypu.onrender.com'
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), 2000)
       try {
@@ -618,7 +618,7 @@ export const getUserAnalyses = async () => {
     try {
       const session = await getSession()
       const userId = session?.user?.id || 'guest-user-id'
-      const mlApiUrl = import.meta.env.VITE_ML_API_URL || 'http://127.0.0.1:5000'
+      const mlApiUrl = import.meta.env.VITE_ML_API_URL || 'https://careergenie-lypu.onrender.com'
       const response = await fetch(`${mlApiUrl}/api/analyses?user_id=${encodeURIComponent(userId)}`)
       if (response.ok) {
         const dbData = await response.json()
