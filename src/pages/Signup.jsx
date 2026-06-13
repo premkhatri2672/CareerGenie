@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom"
 import { signup, signInWithGoogle } from "../utils/auth"
 import { useAuth } from "../contexts/AuthContext"
 import { motion } from 'framer-motion'
+import toast from 'react-hot-toast'
 import "./Auth.css"
 
 const GoogleIcon = () => (
@@ -46,7 +47,6 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault()
     if (password.length < 6) {
-      const toast = (await import('react-hot-toast')).default
       toast.error('Password must be at least 6 characters')
       return
     }
