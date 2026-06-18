@@ -952,31 +952,238 @@
 }
 
 
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE: Tablet (≤ 1024px)
+   ═══════════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
+  .dashboard {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
   .stats-grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .skills-insights-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
   .quick-actions-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+  }
+
+  .dash-grid-2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .metric-value {
+    font-size: 1.6rem;
+  }
+
+  .glass-card {
+    padding: 1.25rem;
+    border-radius: 16px;
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE: Mobile (≤ 768px)
+   ═══════════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .dashboard {
-    padding: 1.25rem;
+    padding: 1rem;
+    gap: 1rem;
   }
 
+  /* Header: stack vertically on mobile */
+  .dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+  }
+
+  .dash-header-left h1 {
+    font-size: 1.3rem;
+  }
+
+  .greeting-wave {
+    font-size: 1.4rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.8rem;
+  }
+
+  /* Hide desktop profile pill in header, sidebar handles it */
+  .dash-header-right {
+    align-self: flex-end;
+  }
+
+  .header-profile span {
+    display: none;
+  }
+
+  .header-profile {
+    padding: 0.4rem;
+  }
+
+  .header-profile img {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Stats: 3 cols → stack to single column */
+  .stats-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .metric-card {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .metric-value {
+    font-size: 1.4rem;
+  }
+
+  .metric-label {
+    font-size: 0.7rem;
+  }
+
+  /* Skills cards → stack */
+  .skills-insights-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .skills-card h4 {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-tag {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  /* Quick actions: 2 columns on mobile */
+  .quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .quick-action-btn {
+    padding: 1rem 0.5rem;
+    border-radius: 14px;
+  }
+
+  .qa-icon {
+    font-size: 1.3rem;
+  }
+
+  .quick-action-btn span:last-child {
+    font-size: 0.75rem;
+  }
+
+  /* Glass cards */
+  .glass-card {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .latest-analysis-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .card-header h3 {
+    font-size: 0.9rem;
+  }
+
+  .see-all-btn {
+    font-size: 0.78rem;
+  }
+
+  /* Recent items */
+  .recent-item {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .recent-role {
+    font-size: 0.8rem;
+  }
+
+  .recent-date {
+    font-size: 0.7rem;
+  }
+
+  .recent-score {
+    font-size: 0.82rem;
+  }
+
+  /* 2-col grids → 1 col */
   .dash-grid-2 {
     grid-template-columns: 1fr;
   }
 
-  .stats-row {
-    grid-template-columns: 1fr;
+  .stats-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .skills-insights-row {
-    grid-template-columns: 1fr;
+  /* Empty state */
+  .empty-state-card {
+    padding: 2.5rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  .empty-icon {
+    font-size: 3rem;
+  }
+
+  .empty-state-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .empty-state-card p {
+    font-size: 0.82rem;
+  }
+
+  .empty-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .empty-actions .action-btn-primary,
+  .empty-actions .action-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Action buttons */
+  .action-btn-primary,
+  .action-btn-secondary {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.82rem;
+  }
+
+  .action-btn-primary img {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Modal / result overlays */
+  .result-modal-overlay {
+    padding: 0.75rem;
   }
 
   .result-header {
@@ -987,14 +1194,181 @@
   .result-body.dash-grid-2 {
     grid-template-columns: 1fr;
   }
+
+  /* Topbar */
+  .app-topbar {
+    padding: 0.75rem 1rem;
+  }
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE: Small Mobile (≤ 480px)
+   ═══════════════════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
-  .quick-actions-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .dashboard {
+    padding: 0.75rem;
+    gap: 0.75rem;
   }
 
+  .dash-header-left h1 {
+    font-size: 1.15rem;
+  }
+
+  .greeting-text {
+    gap: 0.5rem;
+  }
+
+  .greeting-wave {
+    font-size: 1.2rem;
+  }
+
+  /* Stats: collapse to 1 col on very small screens */
+  .stats-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .metric-card {
+    padding: 0.75rem;
+    border-radius: 12px;
+    gap: 0.25rem;
+  }
+
+  .metric-value {
+    font-size: 1.2rem;
+  }
+
+  .metric-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* Quick actions stay 2 cols but more compact */
+  .quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .quick-action-btn {
+    padding: 0.85rem 0.4rem;
+    border-radius: 12px;
+  }
+
+  .qa-icon {
+    font-size: 1.1rem;
+  }
+
+  .quick-action-btn span:last-child {
+    font-size: 0.7rem;
+  }
+
+  .quick-actions-section h3 {
+    font-size: 0.9rem;
+  }
+
+  /* Glass card tighter */
+  .glass-card {
+    padding: 0.85rem;
+    border-radius: 12px;
+  }
+
+  .card-header {
+    margin-bottom: 0.85rem;
+  }
+
+  /* Skill tags smaller */
+  .skills-tags {
+    gap: 0.35rem;
+  }
+
+  .skill-tag {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  /* Recent list tighter */
+  .recent-item {
+    padding: 0.5rem 0.6rem;
+    border-radius: 10px;
+  }
+
+  .recent-role {
+    font-size: 0.75rem;
+  }
+
+  .recent-score {
+    font-size: 0.78rem;
+  }
+
+  /* Empty state */
+  .empty-state-card {
+    padding: 2rem 1rem;
+  }
+
+  .empty-icon {
+    font-size: 2.5rem;
+  }
+
+  .empty-state-card h2 {
+    font-size: 1.05rem;
+  }
+
+  .empty-state-card p {
+    font-size: 0.78rem;
+  }
+
+  /* Score badges */
+  .score-badge {
+    padding: 0.2rem 0.65rem;
+    font-size: 0.75rem;
+  }
+
+  .latest-meta {
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Stats 4-col → 2 col */
   .stats-grid-4 {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  /* Action btns full width */
+  .action-btn-primary,
+  .action-btn-secondary {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.78rem;
+    border-radius: 8px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE: Ultra-small (≤ 360px)
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 360px) {
+  .dashboard {
+    padding: 0.5rem;
+  }
+
+  .dash-header-left h1 {
+    font-size: 1rem;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.4rem;
+  }
+
+  .metric-card {
+    padding: 0.6rem;
+  }
+
+  .metric-value {
+    font-size: 1rem;
+  }
+
+  .metric-label {
+    font-size: 0.6rem;
   }
 }

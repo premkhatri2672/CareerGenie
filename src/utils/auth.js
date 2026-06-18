@@ -60,7 +60,10 @@ export const logout = async () => {
     toast.error(error.message);
     throw error;
   }
-  localStorage.clear();
+  // Clear all user-specific cached data including user ID tracker
+  localStorage.removeItem('careergenie_analyses');
+  localStorage.removeItem('careergenie_current_user_id');
+  localStorage.removeItem('careergenie_guest_user_id');
   toast.success('Logged out');
 };
 
