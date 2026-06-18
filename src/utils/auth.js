@@ -20,8 +20,7 @@ export const signup = async (email, password, name) => {
     email,
     password,
     options: {
-      data: { name },                                    
-      emailRedirectTo: `${window.location.origin}/login`  
+      data: { name }
     }
   });
   if (error) {
@@ -35,7 +34,7 @@ export const signup = async (email, password, name) => {
     throw new Error('Email already registered');
   }
 
-  toast.success('Account created! Check your email to confirm, then log in.');
+  toast.success('Account created successfully! 🎉');
   return data;
 };
 

@@ -36,3 +36,5 @@ ml_model/venv/
 ml_model/storage/analyses.json
 ml_model/models/resume_model.pkl
 models/resume_model.pkl
+
+.vercel

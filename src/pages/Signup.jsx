@@ -35,7 +35,6 @@ const Signup = () => {
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
   const [loading, setLoading] = useState(false)
-  const [emailSent, setEmailSent] = useState(false)
   const [showPass, setShowPass] = useState(false)
   const navigate = useNavigate()
   const { user } = useAuth()
@@ -53,7 +52,7 @@ const Signup = () => {
     setLoading(true)
     try {
       await signup(email, password, name)
-      setEmailSent(true)
+      navigate('/dashboard', { replace: true })
     } catch (error) {
       console.error("Signup error:", error.message)
     } finally {
@@ -71,39 +70,7 @@ const Signup = () => {
 
   const strength = getPasswordStrength(password)
 
-  
-  if (emailSent) {
-    return (
-      <div className="auth-page">
-        <div className="auth-orb auth-orb-1" />
-        <div className="auth-orb auth-orb-2" />
-        <motion.div
-          className="auth-card"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="auth-confirm">
-            <span className="auth-confirm-icon">📧</span>
-            <h2>Check Your Email</h2>
-            <p>We sent a confirmation link to <strong style={{ color: 'white' }}>{email}</strong></p>
-            <p style={{ marginTop: '0.5rem', fontSize: '0.82rem' }}>
-              Click the link in your email to activate your account, then come back and log in.
-            </p>
-            <motion.button
-              className="auth-btn-primary"
-              style={{ marginTop: '1.5rem' }}
-              onClick={() => navigate('/login')}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Go to Login →
-            </motion.button>
-          </div>
-        </motion.div>
-      </div>
-    )
-  }
+
 
   return (
     <div className="auth-page">

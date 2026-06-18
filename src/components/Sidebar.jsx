@@ -63,7 +63,7 @@ const navItems = [
 ]
 
 const Sidebar = () => {
-  const { isSidebarOpen, closeSidebar, toggleSidebar } = useSidebar()
+  const { isSidebarOpen, isMobile, closeSidebar, toggleSidebar } = useSidebar()
   const { user } = useAuth()
   const navigate = useNavigate()
 
@@ -108,6 +108,9 @@ const Sidebar = () => {
               to={to}
               className={({ isActive }) => `sidelink ${isActive ? 'sidelink--active' : ''}`}
               title={!isSidebarOpen ? label : undefined}
+              onClick={() => {
+                if (isMobile) closeSidebar()
+              }}
             >
               <span className="sidelink-icon"><Icon /></span>
               <span className="sidelink-label">{label}</span>
